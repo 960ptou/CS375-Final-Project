@@ -1,1 +1,37 @@
-GROUP BMembersa)Adesewa Adesidab)Weijie Chen2) Project Description	A novel viewing site. We will have ports for users to add a whole directory of novels (in a specific format), to upload everything to the side to display, the user should be able to update and delete their portion of the novel from the DB. For displaying we allow dynamic formatting for the user (fonts, size, spacing, and other things we consider as issues )3) CRUD4) fuzzy search, auto complete (getting ABC will give ABCDE…) and different language versions of same book5) https://github.com/960ptou/CS375-Final-Project6)i) Weijie – Server side development, Database, ~ somewhat comfortable, since I did web scrapers, there are some experiences  working with DOMs, and some UI for coop that requires html, css. For splitting work, we’ll try our best to balance things by helping.Sewa- I’ve had prior experience with a web dev team for mostly backend and some front end. I would say I’m comfortable I will do what I have to do . I will stay on top of my tasks so if I need help, I can ask on time.ii) Mondays in class and Fridays(flexible)iii) 4 or 5 hours. We can contribute three hours a week.iv)Yes but neither team member will do all the work. For example, if someone is busy during one week the next week they should take on an extra task.v)let the instructor know.
+GROUP B
+
+Members
+a)Adesewa Adesida
+b)Weijie Chen
+
+2) Project Description
+	A novel viewing site. We will have ports for users to add a whole directory of novels (in a specific format), to upload everything to the side to display, the user should be able to update and delete their portion of the novel from the DB. For displaying we allow dynamic formatting for the user (fonts, size, spacing, and other things we consider as issues )
+
+3) CRUD
+
+4) fuzzy search, auto complete (getting ABC will give ABCDE√â) and different language versions of same book
+
+5) https://github.com/960ptou/CS375-Final-Project
+
+
+6)
+i) Weijie √ê Server side development, Database, ~ somewhat comfortable, since I did web scrapers, there are some experiences  working with DOMs, and some UI for coop that requires html, css. For splitting work, we√ïll try our best to balance things by helping.
+
+Sewa- I√ïve had prior experience with a web dev team for mostly backend and some front end. I would say I√ïm comfortable I will do what I have to do . I will stay on top of my tasks so if I need help, I can ask on time.
+
+ii) Mondays in class and Fridays(flexible)
+iii) 4 or 5 hours. We can contribute three hours a week.
+iv)Yes but neither team member will do all the work. For example, if someone is busy during one week the next week they should take on an extra task.
+v)let the instructor know.
+
+Functionality
+ 
+1)Ability to upload ebooks and have them processed into styled html
+2)Search through ebooks by author (title search)
+3)Reader mode(view ebook and set the styling)
+4)Create accounts and save books to public library and delete from personal account
+5)Only an uploader should be able to delete a book from their current account but they can delete it from their profile
+
+
+
+
