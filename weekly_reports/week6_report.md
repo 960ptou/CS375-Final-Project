@@ -29,13 +29,18 @@
   - There will some issues working with cookies (never used them)
     - the plan is to do search on google.
 
+-Adesewa Adesida
+  -Not sure whether I should do the mock  product using wordpress or I should create a slideshow since there will
+	be a presentation later anyway
+	 - the plan is to follow the path of least resistance.
 
-#### 4. Obstacles
-###### A list of links to all commits they pushed to the project repo last week. If the group member’s contribution last week was in the form of note taking, feature planning, or design sketches, these should be included in the report.Any logisitical or technical obstacles you expect to encounter next week and how you plan to address them.
-
-- The project seems fine, the DB has some sort of tables that should be modified later as things gets implemented.
 
 
-#### 5.Reflection
+
+
+
+#### 4.Reflection
 
 - So far, we have been able to work well as a team to come up with a proposal and plan for what we are executing for our final project. Our intended meeting dates will be Wednesday and Fridays mostly to do our tasks on wednesday and Friday to do our weekly update. We plan to start mostly on the functionality first and then develop the style later on.
+
+- The project seems fine, the DB has some sort of tables that should be modified later as things gets implemented.
