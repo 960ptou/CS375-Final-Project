@@ -24,15 +24,15 @@
   - https://github.com/960ptou/CS375-Final-Project/commits/main (960ptou and wc489 are both Weijie)
 
 
-#### 3.
+#### 3. Logisitical or technical obstacles
 - Weijie Chen
   - There will some issues working with cookies (never used them)
     - the plan is to do search on google.
 
--Adesewa Adesida
-  -Not sure whether I should do the mock  product using wordpress or I should create a slideshow since there will
+- Adesewa Adesida
+  - Not sure whether I should do the mock product using wordpress or I should create a slideshow since there will
 	be a presentation later anyway
-	 - the plan is to follow the path of least resistance.
+	- the plan is to follow the path of least resistance.
 
 
 
