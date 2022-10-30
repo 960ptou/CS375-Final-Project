@@ -1,5 +1,5 @@
 create table book(
-    bookid serial integer primary key,
+    bookid serial primary key,
     author varchar(512),
     rating float,
     views integer,
@@ -13,19 +13,18 @@ create table book_genre(
     genre varchar(128),
     primary key(bookid, genre),
     foreign key (bookid) references book(bookid) on delete cascade
-)
+);
 
-create table user(
+create table users(
     userid integer primary key,
     username varchar(256),
     hashpass varchar(512)
-    
-)
+);
 
 create table ownby(
     bookid integer,
     userid integer,
     primary key (bookid),
     foreign key (bookid) references book(bookid) on delete cascade,
-    foreign key (userid) references user(userid) on delete cascade
-)
+    foreign key (userid) references users(userid) 
+);
