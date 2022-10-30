@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/960ptou/CS375-Final-Project/issues"
   },
-  "homepage": "https://github.com/960ptou/CS375-Final-Project#readme"
+  "homepage": "https://github.com/960ptou/CS375-Final-Project#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.8.0"
+  }
 }
