@@ -44,8 +44,8 @@
         <tr><td>Allowing user to add folder</td>    <td>No</td></tr>
         <tr><td>Home Page</td>                      <td>No</td> </tr>
         <tr><td>Page for login</td>                 <td>No</td> </tr>
-        <tr><td>Page for sign up</td>                <td>No</td> </tr>
-        <tr><td>Page-Book display(reader page)</td><td>No</td> </tr>
+        <tr><td>Page for sign up</td>               <td>No</td> </tr>
+        <tr><td>Page-Book display(reader page)</td> <td>No</td> </tr>
         <tr><td>Database</td>                       <td>No</td> </tr>
         <tr><td>Reading list</td>                   <td>No</td> </tr>
         <tr><td>Stay Login(cookies)</td>            <td>No</td> </tr>
