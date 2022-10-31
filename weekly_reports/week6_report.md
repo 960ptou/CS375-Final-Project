@@ -5,7 +5,7 @@
 </thead>
 </table>
 
-##### Project link: https://github.com/960ptou/CS375-Final-Project
+##### [ProjectLink](https://github.com/960ptou/CS375-Final-Project)
 
 #### 2 Nextweek.
 - Adesewa
@@ -21,7 +21,7 @@
     - Prepare the database for the books (1-3hr)
   
 - Git commits
-  - https://github.com/960ptou/CS375-Final-Project/commits/main (960ptou and wc489 are both Weijie)
+  - [CommitLink](https://github.com/960ptou/CS375-Final-Project/commits/main) (960ptou and wc489 are both Weijie)
 
 
 #### 3. Logisitical or technical obstacles
