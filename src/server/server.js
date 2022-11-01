@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 //https://stackoverflow.com/questions/44816519/how-to-get-cookie-value-in-expressjs
 const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
 
 const port = 3000;
 const hostname = "localhost";
@@ -42,27 +43,35 @@ app.post("/signup", (req, res) => {
     if (!pwutil.validUserpass(userpass)){
         return res.status(401).json({"error" : "Invalid Password : 5-16 characters"});
     }
-    
+
     // check if exist user return.
-    pool.query("SELECT userid FROM users WHERE username = $1", [username])
-    .then((result) => {
+    pool.query(
+        "SELECT userid FROM users WHERE username = $1", [
+            username
+    ]).then((result) => {
         if (result.rows.length !== 0) { // exists
             return res.status(401).json({"error" : "Username Exist"});
+        }else{
+            bcrypt// adding
+                .hash(userpass, 10) // testing now
+                .then((hashedPass) => {
+                    let userId = pwutil.randNumID();
+                    pool.query(
+                        "INSERT INTO users (userid, username, hashpass) VALUES ($1, $2, $3)",
+                        [userId, username, hashedPass]
+                    ).then(()=>{
+                        console.log(username , "account created");
+                        return res.status(SUCCESS).send();
+                    }).catch((error)=>{
+                        console.log(error);
+                        return res.status(SERVER_ERROR).json({"error": "Server DB error"});
+                    })
+                }).catch((error) =>{
+                    console.log(error);
+                    return res.status(SERVER_ERROR).json({"error": "Server error"});;
+                })
         }
     });
-
-    let hashPass = pwutil.hashPass(userpass);
-    let userId = pwutil.randNumID();
-
-    pool.query(
-        "INSERT INTO users (userid, username, hashpass) VALUES ($1, $2, $3)",
-        [userId, username, hashPass]
-    ).then(() =>{
-        res.status(SUCCESS).send();
-    }).catch((error)=>{
-        console.log(new Error(error));
-        res.status(SERVER_ERROR).json({"error": "Server DB error"});
-    })
 });
 
 
@@ -78,15 +87,22 @@ app.post("/login", (req, res) =>{
 
         let hashedPass = result.rows[0].hashpass;
         let userid = result.rows[0].userid;
-        let match = pwutil.comparePass(userpass, hashedPass);
 
-        if (match){
-            let sessionCookie = pwutil.sessionCookie();
-            sessionCookies[sessionCookie] = userid;
-            return res.status(SUCCESS).header("set-cookie", sessionCookie).send();
-        }else{
-            return res.status(400).json({"error" : "Wrong password"});
-        }
+        bcrypt
+        .compare(userpass, hashedPass)
+        .then((passwordMatched) => {
+            if (passwordMatched) {
+                let sessionCookie = pwutil.sessionCookie();
+                sessionCookies[sessionCookie] = userid;
+                return res.status(SUCCESS).header("set-cookie", sessionCookie).send();
+            } else {
+                return res.status(400).json({"error" : "Wrong password"});
+            }
+        })
+        .catch((error) => {// bcrypt crashed
+            console.log(error);
+            res.status(500).json({"error": "Server error"});
+        });
     });
 });
 

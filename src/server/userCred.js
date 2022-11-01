@@ -1,33 +1,8 @@
-const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require('uuid');
 
 class passwordUtils{
-    constructor(){
-    }
+    constructor(){}
 
-    hashPass(pass){
-        bcrypt.hashSync(pass, 10) // just for testing now
-        .then((hashedPass) => {
-            return hashedPass;
-        }).catch((error) =>{
-            console.log(new Error(error));
-            return null;
-        })
-    }
-
-    comparePass(pass, dbHashPass){
-        bcrypt.compare(pass, dbHashPass)
-        .then((passwordMatched) => {
-            if (passwordMatched) {
-                return true;
-            } else {
-                return false;
-            }
-        }).catch((error) => {// bcrypt crashed
-            console.log(new Error(error));
-            return null;
-        });
-    }
 
     randNumID(){
         return Math.floor(Math.random() * Date.now()); // double randomness
