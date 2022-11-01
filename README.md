@@ -1,5 +1,10 @@
 # CS375-Final-Project
 
+### Run instruction
+```bash
+# by default you will run "npm run" but for
+```
+
 ## Group Members:
 <table>
 <thead>
