@@ -1,19 +1,24 @@
 const { v4: uuidv4 } = require('uuid');
 
 class passwordUtils{
-    constructor(){}
 
+
+    constructor(min = 8, max = 16){
+        this.userMinLen = min;
+        this.userMaxLen = max;
+    }
 
     randNumID(){
-        return Math.floor(Math.random() * Date.now()); // double randomness
+        let ran = Math.random();
+        return Math.floor(ran ? ran : 1,  * Date.now()); // double randomness
     }
 
     validUsername(rawUser){
-        return rawUser.length>= 8 && rawUser.length <= 16;
+        return rawUser.length >= this.userMinLen && rawUser.length <= this.userMaxLen;
     }
 
     validUserpass(rawPass){
-        return rawPass.length>=5 && rawPass.length <= 16;
+        return rawPass.length >= this.userMinLen && rawPass.length <= this.userMaxLen;
     }
 
     sessionCookie(){ //https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13

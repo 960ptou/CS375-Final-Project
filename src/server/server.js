@@ -12,7 +12,7 @@ const env = require("../env.json");
 const Pool = pg.Pool;
 const pool = new Pool(env);
 const userCred = require(__dirname + "/userCred");
-const pwutil = userCred.passwordUtils;
+const pwutil = userCred.passwordUtils ;
 
 pool.connect().then(function () {
     console.log(`Connected to database ${env.database}`);
@@ -41,7 +41,7 @@ app.post("/signup", (req, res) => {
     }
 
     if (!pwutil.validUserpass(userpass)){
-        return res.status(401).json({"error" : "Invalid Password : 5-16 characters"});
+        return res.status(401).json({"error" : "Invalid Password : 8-16 characters"});
     }
 
     // check if exist user return.
