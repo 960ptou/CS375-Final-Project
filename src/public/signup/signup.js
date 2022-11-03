@@ -1,3 +1,5 @@
+// modified from execerise.
+
 let result = document.getElementById("result");
 
 document.getElementById("create").addEventListener("click", ()=>{

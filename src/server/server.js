@@ -33,15 +33,15 @@ let sessionCookies = {
 }
 
 app.post("/signup", (req, res) => {
-    let username = String(req.body.username);
-    let userpass = String(req.body.userpass);
+    let username = req.body.username ? String(req.body.username) : ""; // valid input not null
+    let userpass = req.body.userpass ? String(req.body.userpass) : ""; 
 
     if(!pwutil.validUsername(username)){
-        return res.status(401).json({"error" : "Invalid Username : 8-16 characters"});
+        return res.status(401).json({"error" : "Invalid Username : 4-16 characters"});
     }
 
     if (!pwutil.validUserpass(userpass)){
-        return res.status(401).json({"error" : "Invalid Password : 8-16 characters"});
+        return res.status(401).json({"error" : "Invalid Password : 4-16 characters"});
     }
 
     // check if exist user return.
@@ -81,30 +81,47 @@ app.post("/login", (req, res) =>{
 
     pool.query("SELECT hashpass,userid FROM users WHERE username = $1", [username])
     .then((result) => {
-        if (result.rows.length === 0) { // exists
+        if (result.rows.length === 0) { // not exist
             return res.status(401).json({"error" : "Username Doesn't exist"});
+        }else{
+            let hashedPass = result.rows[0].hashpass;
+            let userid = result.rows[0].userid;
+
+            bcrypt
+            .compare(userpass, hashedPass)
+            .then((passwordMatched) => {
+                if (passwordMatched) {
+                    let sessionCookie = pwutil.sessionCookie();
+                    
+                    sessionCookies[sessionCookie] = userid;
+                    return res.status(SUCCESS).header({
+                        "Set-Cookie": `sessionToken=${sessionCookie};expires=${pwutil.minutesFromNow(30).toUTCString()};Path=/;HttpOnly; SameSite=Strict`,
+                    }).send();
+                } else {
+                    return res.status(400).json({"error" : "Wrong password"});
+                }
+            })
+            .catch((error) => {// bcrypt crashed
+                console.log(error);
+                res.status(SERVER_ERROR).json({"error": "Server error"});
+            });
         }
-
-        let hashedPass = result.rows[0].hashpass;
-        let userid = result.rows[0].userid;
-
-        bcrypt
-        .compare(userpass, hashedPass)
-        .then((passwordMatched) => {
-            if (passwordMatched) {
-                let sessionCookie = pwutil.sessionCookie();
-                sessionCookies[sessionCookie] = userid;
-                return res.status(SUCCESS).header("set-cookie", sessionCookie).send();
-            } else {
-                return res.status(400).json({"error" : "Wrong password"});
-            }
-        })
-        .catch((error) => {// bcrypt crashed
-            console.log(error);
-            res.status(500).json({"error": "Server error"});
-        });
     });
 });
+
+app.get("/loggedin", (req,res) => {// Later for sending user info, now just saying logged in or not
+    let session = req.cookies;
+
+    let token = session.sessionToken;
+    console.log(sessionCookies[token]);
+
+    if (sessionCookies[token]){
+        res.status(SUCCESS).send("You are logged in");
+    }else{
+        res.status(400).json({"error" : "Not logged in"});
+    }
+});
+
 
 
 app.listen(port, hostname, () => {
