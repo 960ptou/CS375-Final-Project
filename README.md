@@ -2,7 +2,26 @@
 
 ### Run instruction
 ```bash
-# by default you will run "npm run" but for
+# by default you will run "npm run" but for since db doesn't exist;
+# create a env.json that looks like
+'
+{
+    "user": "username",
+    "host": "localhost",
+    "database": "test",
+    "password": "your password to db",
+    "port": 5432
+}
+'
+# in the project directory
+bash ./dummy_setup/refreshdb.bash
+npm run start
+# for testing adding a user
+bash ./dummy_setup/testUser.bash # adds a user "test" with pass "test"
+# Then you will need to login into the site to login
+"http://localhost:3000/login"
+# You can't find a cookie, but in the broswer console do, you will see that if you are logged in.
+'fetch("/loggedin").then((response) => {console.log(response)})'
 ```
 
 ## Group Members:
@@ -53,7 +72,7 @@
         <tr><td>Page-Book display(reader page)</td> <td>No</td> </tr>
         <tr><td>Database</td>                       <td>No</td> </tr>
         <tr><td>Reading list</td>                   <td>No</td> </tr>
-        <tr><td>Stay Login(cookies)</td>            <td>No</td> </tr>
+        <tr><td>Stay Login(cookies)</td>            <td>Yes</td> </tr>
         <tr><td>Search (author, genre?,title)</td>  <td>No</td> </tr>
         <tr><td>User option formatting(fonts,size, spacing, profile color)</td> <td>No</td> </tr>
     </tbody>
