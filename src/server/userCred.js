@@ -1,43 +1,45 @@
-let bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require('uuid');
 
 class passwordUtils{
-    constructor(){}
 
-    hashPass(pass, salt){
-        bcrypt.hash(pass, salt)
-        .then((hashedPass) => {
-            return hashedPass;
-        }).catch((error) =>{
-            console.log(new Error(error));
-            return null;
-        })
-    }
 
-    comparePass(pass, dbHashPass){
-        bcrypt.compare(pass, dbHashPass)
-        .then((passwordMatched) => {
-            if (passwordMatched) {
-                return true;
-            } else {
-                return false;
-            }
-        }).catch((error) => {// bcrypt crashed
-            console.log(new Error(error));
-            return null;
-        });
+    constructor(min = 4, max = 16){
+        this.userMinLen = min;
+        this.userMaxLen = max;
     }
 
     randNumID(){
-        return Math.floor(Math.random() * Date.now()); // double randomness
+        let ran = Math.random();
+        return Math.floor((ran ? ran : 1)  * Date.now()); // double randomness
     }
 
     validUsername(rawUser){
-        return 8 >= rawUser.length && 16 <= rawUser.length;
+        return rawUser.length >= this.userMinLen && rawUser.length <= this.userMaxLen;
     }
 
     validUserpass(rawPass){
-        return 5 >= rawPass.length && 16 <= rawPass.length;
+        return rawPass.length >= this.userMinLen && rawPass.length <= this.userMaxLen;
+    }
+
+    sessionCookie(){ //https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13
+        return uuidv4();
+    }
+
+    minutesFromNow(minutes){
+        let now = new Date();
+        let resultTime = now.getTime();
+        resultTime += minutes * 1000; // js format
+        now.setTime(resultTime);
+        return now;
+    }
+
+    hoursFromNow(hours){
+        return this.minutesFromNow(60 * hours); 
+    }
+
+    daysFromNow(days){
+        return this.hoursFromNow(24 * days);
     }
 };
 
-module.exports.passwordUtils = passwordUtils;
+module.exports.passwordUtils = new passwordUtils();

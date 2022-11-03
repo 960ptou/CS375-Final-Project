@@ -16,14 +16,14 @@ create table book_genre(
 );
 
 create table users(
-    userid integer primary key,
-    username varchar(256),
+    userid varchar(512) primary key,
+    username varchar(256) unique,
     hashpass varchar(512)
 );
 
 create table ownby(
     bookid integer,
-    userid integer,
+    userid varchar(512),
     primary key (bookid),
     foreign key (bookid) references book(bookid) on delete cascade,
     foreign key (userid) references users(userid) 
