@@ -2,7 +2,7 @@
 
 ##Template
 
-https://www.figma.com/file/nJrHOSYPBl8C7SFzxBh3N7/Anima---Export-Figma-to-HTML%2C-React-%26-Vue-code-(Community)?node-id=0%3A1
+https://www.figma.com/file/nJrHOSYPBl8C7SFzxBh3N7/groupB?node-id=0%3A1
 
 ### Run instruction
 ```bash
