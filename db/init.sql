@@ -1,4 +1,5 @@
 create table book(
+    bookname varchar(512) not null,
     bookid serial primary key,
     author varchar(512),
     rating float,
