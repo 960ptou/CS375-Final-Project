@@ -31,18 +31,19 @@ const SERVER_ERROR = 500;
 let sessionCookies = {
     // cookieId : userid -> for storing login
 }
-app.post("/search", function (req, res) {
+
+app.post("/search",  (req, res)=> {
     let search = req.body.search;
     if ((search !== undefined) || (search !== "") ){
         // search
         pool.query(
             "SELECT bookname FROM book WHERE search = $1",[
                 search]
-        ).then(function (result) {
+        ).then((result) => {
             console.log(result.rows);
             return res.status(SUCCESS).send();
         }
-        ).catch(function (error) {
+        ).catch((error) => {
             console.log(error);
             return res.status(SERVER_ERROR).send("Book not found");
         });
@@ -54,6 +55,7 @@ app.post("/search", function (req, res) {
 
 
     });
+
 app.post("/signup", (req, res) => {
     let username = req.body.username ? String(req.body.username) : ""; // valid input not null
     let userpass = req.body.userpass ? String(req.body.userpass) : ""; 
