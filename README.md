@@ -1,5 +1,9 @@
 # CS375-Final-Project
 
+##Template
+
+https://www.figma.com/file/nJrHOSYPBl8C7SFzxBh3N7/groupB?node-id=0%3A1
+
 ### Run instruction
 ```bash
 # by default you will run "npm run" but for since db doesn't exist;

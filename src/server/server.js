@@ -20,6 +20,7 @@ pool.connect().then(function () {
 
 app.use(express.static( __dirname + "/../public/login"));
 app.use(express.static(__dirname + "/../public/signup"));
+app.use(express.static(__dirname + "/../public"));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -31,6 +32,30 @@ const SERVER_ERROR = 500;
 let sessionCookies = {
     // cookieId : userid -> for storing login
 }
+
+app.post("/search",  (req, res)=> {
+    let search = req.body.search;
+    if ((search !== undefined) || (search !== "") ){
+        // search
+        pool.query(
+            "SELECT bookname FROM book WHERE search = $1",[
+                search]
+        ).then((result) => {
+            console.log(result.rows);
+            return res.status(SUCCESS).send();
+        }
+        ).catch((error) => {
+            console.log(error);
+            return res.status(SERVER_ERROR).send("Book not found");
+        });
+        
+
+    } else {
+        return res.status(BAD_REQUEST).send("Invalid search");
+    }
+
+
+    });
 
 app.post("/signup", (req, res) => {
     let username = req.body.username ? String(req.body.username) : ""; // valid input not null
