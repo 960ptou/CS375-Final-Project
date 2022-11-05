@@ -48,7 +48,7 @@ app.post("/search",  (req, res)=> {
             console.log(error);
             return res.status(SERVER_ERROR).send("Book not found");
         });
-        return res.status(SUCCESS).send();
+        
 
     } else {
         return res.status(BAD_REQUEST).send("Invalid search");
