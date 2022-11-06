@@ -20,7 +20,7 @@ pool.connect().then(function () {
 
 app.use(express.static( __dirname + "/../public/login"));
 app.use(express.static(__dirname + "/../public/signup"));
-app.use(express.static(__dirname + "/../public"));
+app.use(express.static(__dirname + "/../public/home"));
 app.use(express.json());
 app.use(cookieParser());
 
