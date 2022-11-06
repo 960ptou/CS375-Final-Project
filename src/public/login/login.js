@@ -2,7 +2,7 @@
 let result = document.getElementById("result");
 
 document.getElementById("login").addEventListener("click", () => {
-	fetch("/login", {
+	fetch("/cred/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"

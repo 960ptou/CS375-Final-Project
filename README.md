@@ -8,6 +8,7 @@ https://www.figma.com/file/nJrHOSYPBl8C7SFzxBh3N7/groupB?node-id=0%3A1
 ```bash
 # by default you will run "npm run" but for since db doesn't exist;
 # create a env.json that looks like
+Replace the username and password; keep the other ones.
 '
 {
     "user": "username",
@@ -25,7 +26,7 @@ bash ./dummy_setup/testUser.bash # adds a user "test" with pass "test"
 # Then you will need to login into the site to login
 "http://localhost:3000/login"
 # You can't find a cookie, but in the broswer console do, you will see that if you are logged in.
-'fetch("/loggedin").then((response) => {console.log(response)})'
+'fetch("/cred/loggedin").then((response) => {console.log(response)})'
 ```
 
 ## Group Members:

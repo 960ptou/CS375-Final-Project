@@ -6,7 +6,7 @@ document.getElementById("create").addEventListener("click", ()=>{
     let username = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
 
-    fetch("/signup", {
+    fetch("/cred/signup", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
