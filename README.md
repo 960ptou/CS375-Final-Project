@@ -24,7 +24,7 @@ npm run start
 # for testing adding a user
 bash ./dummy_setup/testUser.bash # adds a user "test" with pass "test"
 # Then you will need to login into the site to login
-"http://localhost:3000/login"
+"http://localhost:3000/login.html"
 # You can't find a cookie, but in the broswer console do, you will see that if you are logged in.
 'fetch("/cred/loggedin").then((response) => {console.log(response)})'
 ```
