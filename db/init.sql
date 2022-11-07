@@ -2,8 +2,8 @@ create table book(
     bookname varchar(512) not null,
     bookid serial primary key,
     author varchar(512),
-    rating float,
-    views integer,
+    rating float default 0,
+    views integer default 0,
     book_language varchar(128),
     book_upload date,
     is_private boolean

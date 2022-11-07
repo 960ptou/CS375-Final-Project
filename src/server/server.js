@@ -19,11 +19,15 @@ pool.connect().then(function () {
 app.use(express.static( __dirname + "/../public/login"));
 app.use(express.static(__dirname + "/../public/signup"));
 app.use(express.static(__dirname + "/../public/home"));
+
+
 app.use(express.json());
 app.use(cookieParser());
 
 const credRoute = require(__dirname + "/credientialRoute");
+const bookRoute = require(__dirname + "/booksRoute");
 app.use("/cred", credRoute);
+app.use("/book", bookRoute);
 
 
 const BAD_REQUEST = 400;
@@ -46,14 +50,10 @@ app.post("/search",  (req, res)=> {
             console.log(error);
             return res.status(SERVER_ERROR).send("Book not found");
         });
-        
-
     } else {
         return res.status(BAD_REQUEST).send("Invalid search");
     }
-
-
-    });
+});
 
 
 

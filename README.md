@@ -53,12 +53,13 @@ bash ./dummy_setup/testUser.bash # adds a user "test" with pass "test"
     ]
 
 }
-- dir
-    - arc1
-        - 1-title.txt
+
+- dir (bookid-title)
+    - volume 1
+        - 1-arc.txt
         - ...
-    - arc2
-    - arc3
+    - volume 2
+    - volume 3
     - ...
 
 ```
