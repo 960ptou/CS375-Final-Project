@@ -20,6 +20,15 @@ function getMatchHashFromDir(src){
     return hashMap;
 }
 
+function numberVol(path){
+    let dirInfo = fs.readdirSync(path);
+    let dirLeng = dirInfo.length;
+    if (dirInfo.includes(".DS_Store")){
+        dirLeng --;
+    }
+    return dirLeng;
+}
+
 
 const bookDir = path.join(process.cwd(), "books"); // running directory
 
@@ -35,17 +44,17 @@ router.get("/:bookid/:volume/:arc", (req, res)=>{ // getting single book
     res.sendFile( path.join(__dirname, "..", "public", "books", "books.html") );
 });
 
-
-
 router.post("/:bookid/:volume/:arc", (req, res) =>{
-    
     let bookid = String(req.params.bookid);
     let vol = String(req.params.volume);
     let arc = String(req.params.arc);
 
 
     let txtFilePath = path.join(bookDir, bookid);
+    let maxVol = numberVol(txtFilePath);
     txtFilePath = path.join(txtFilePath, getMatchHashFromDir(txtFilePath)[vol])
+    let maxArcs = numberVol(txtFilePath);
+    arc = arc < maxArcs ? arc : maxArcs; // No bigger than max arc
     txtFilePath = path.join(txtFilePath, getMatchHashFromDir(txtFilePath)[arc])
 
 
@@ -55,6 +64,11 @@ router.post("/:bookid/:volume/:arc", (req, res) =>{
             res.status(400).json({error : "Book not found"});
         }else{
             res.status(200).json({
+                    bookid : bookid,
+                    volume : vol,
+                    maxVol : maxVol,
+                    arc : arc,
+                    maxArcs : maxArcs,
                     title: txtFilePath.substring(txtFilePath.lastIndexOf("/") + 1),
                     text : data,
                 });

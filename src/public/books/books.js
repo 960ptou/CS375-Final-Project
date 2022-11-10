@@ -2,7 +2,12 @@ let textContainer = document.getElementById("content");
 let titleH = document.getElementById("titleH");
 let pages = 0;
 const linesPerPage = 100;
-let currentPage = 1;
+let bookId;
+let currentVol;
+let currentArc;
+let currentPage = Number(getCurrentHash()) || 1; // 0 -> 1
+let maxArcs;
+let maxVols;
 
 // At start -> need a way to get data instead
 fetch(window.location.pathname, {method : "POST"}).then((response)=>{
@@ -15,10 +20,14 @@ fetch(window.location.pathname, {method : "POST"}).then((response)=>{
             splitTextContent();
             titleH.textContent = localStorage.getItem("title");
             displayText(currentPage);
+            bookId = body.bookid;
+            currentVol = Number.parseInt(body.volume);
+            currentArc = Number.parseInt(body.arc);
+            maxArcs = Number.parseInt(body.maxArcs);
+            maxVols = Number.parseInt(body.maxVol);
         })
-
     }else{
-        textContainer.textContent = "FAILED";
+        textContainer.textContent = "FAILED"; // redirect to main page later
     }
 });
 
@@ -27,7 +36,7 @@ function splitTextContent(){
     // into "text1", "text2" ...
     let lines = [];
     let texts = localStorage.getItem("text");
-    // localStorage.removeItem("text");
+    localStorage.removeItem("text");
 
     for(text of texts.split("\n")){
         lines.push(text);
@@ -41,8 +50,10 @@ function splitTextContent(){
 }
 
 function displayText(page, container = textContainer){
+    // https://stackoverflow.com/questions/4607745/split-string-only-on-first-instance-of-specified-character
     let title = localStorage.getItem("title");
-    titleH.textContent = `${title} (${page})`;
+    title = title.substring(title.indexOf("_") + 1).replace(".txt", "").replace("_", " ");
+    titleH.textContent = `${title} ${page == 1 ? "" : `(${page})` }`; // == over === because the type changes.
     let thisPageText = JSON.parse(localStorage.getItem(`text${page}`));
     textContainer.textContent = ""; // clear previous content
 
@@ -54,28 +65,44 @@ function displayText(page, container = textContainer){
 }
 
 window.addEventListener('hashchange', () => {
-    let pageHash = new URL(document.URL).hash.replace("#", "");;
+    let pageHash = getCurrentHash();
     displayText(pageHash);
     window.scrollTo(0, 0);
 });
 
 
 document.getElementById("prevPage").addEventListener("click", () => {
-    if (currentPage === 1){
-        // if currentChapter === 1{ to previous chapter}
+    if (currentPage === 1){ // already first page of arc
         // go to previous chapter
+        if (currentArc === 1){
+            if (currentVol === 1){
+                // redirectToDifferentPage() // home
+                console.log("Volume 1");
+            }else{
+                redirectToDifferentPage(bookId, currentVol - 1, 99999); // server force previous vol last arc
+            }
+        }else{
+            redirectToDifferentPage(bookId, currentVol, currentArc - 1);
+        }
     }else{
         currentPage--;
         updateURLhash(currentPage);
-    }
-    
+    }    
 });
 
 
 document.getElementById("nextPage").addEventListener("click", () =>{
     if (currentPage === pages){
-        // if currentChapter === LastChapter {to next chapter}
-        // go to next chapter
+        if(currentArc === maxArcs){
+            if (currentVol === maxVols){
+                // redirectToDifferentPage() // home
+                console.log("Max vol");
+            }else{
+                redirectToDifferentPage(bookId, currentVol + 1, 1); 
+            }
+        }else{
+            redirectToDifferentPage(bookId, currentVol, currentArc + 1);
+        }
     }else{
         currentPage++;
         updateURLhash(currentPage);
@@ -84,4 +111,12 @@ document.getElementById("nextPage").addEventListener("click", () =>{
 
 function updateURLhash(page){
     window.location.hash = String(page);
+}
+
+function getCurrentHash(){
+    return new URL(document.URL).hash.replace("#", "");
+}
+
+function redirectToDifferentPage(bid, bvol, barc){
+    window.location.replace(`/book/${bid}/${bvol}/${barc}`)
 }
