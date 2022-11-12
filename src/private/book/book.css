@@ -11,3 +11,18 @@ button {
     color : gray;
     background-color: black;
 }
+
+#titleH{
+    text-align: center;
+    font-weight: bolder;
+}
+
+p{
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+body{
+    background-color: #ece6d7;
+}
