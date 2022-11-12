@@ -3,7 +3,7 @@ let container = document.getElementById("container");
 
 let bookid;
 
-fetch("/book/1932/volumes",{method : "POST"}).then((response) =>{
+fetch(window.location.pathname,{method : "POST"}).then((response) =>{
     if(response.status === 200){
         response.json().then((body)=>{
             bookid = body.bookid;
