@@ -8,6 +8,7 @@ let currentArc;
 let currentPage = Number(getCurrentHash()) || 1; // 0 -> 1
 let maxArcs;
 let maxVols;
+let displayURLArc = Number(document.URL.split("/").at(-1));
 
 // At start -> need a way to get data instead
 fetch(window.location.pathname, {method : "POST"}).then((response)=>{
@@ -21,10 +22,14 @@ fetch(window.location.pathname, {method : "POST"}).then((response)=>{
             titleH.textContent = localStorage.getItem("title");
             displayText(currentPage);
             bookId = body.bookid;
+
             currentVol = Number.parseInt(body.volume);
             currentArc = Number.parseInt(body.arc);
             maxArcs = Number.parseInt(body.maxArcs);
             maxVols = Number.parseInt(body.maxVol);
+            if (displayURLArc > maxArcs){
+                redirectToDifferentPage(bookId, currentVol, maxArcs, false);
+            }        
         })
     }else{
         textContainer.textContent = "FAILED"; // redirect to main page later
@@ -66,6 +71,7 @@ function displayText(page, container = textContainer){
 
 window.addEventListener('hashchange', () => {
     let pageHash = getCurrentHash();
+    currentPage = Number.parseInt(pageHash);
     displayText(pageHash);
     window.scrollTo(0, 0);
 });
@@ -76,8 +82,7 @@ document.getElementById("prevPage").addEventListener("click", () => {
         // go to previous chapter
         if (currentArc === 1){
             if (currentVol === 1){
-                // redirectToDifferentPage() // home
-                console.log("Volume 1");
+                redirectToDifferentPage(bookId); // To book page
             }else{
                 redirectToDifferentPage(bookId, currentVol - 1, 99999); // server force previous vol last arc
             }
@@ -92,11 +97,10 @@ document.getElementById("prevPage").addEventListener("click", () => {
 
 
 document.getElementById("nextPage").addEventListener("click", () =>{
-    if (currentPage === pages){
-        if(currentArc === maxArcs){
+    if (currentPage >= pages){
+        if(currentArc === maxArcs ){
             if (currentVol === maxVols){
-                // redirectToDifferentPage() // home
-                console.log("Max vol");
+                redirectToDifferentPage(bookId); // To book page
             }else{
                 redirectToDifferentPage(bookId, currentVol + 1, 1); 
             }
@@ -117,6 +121,13 @@ function getCurrentHash(){
     return new URL(document.URL).hash.replace("#", "");
 }
 
-function redirectToDifferentPage(bid, bvol, barc){
-    window.location.replace(`/book/${bid}/${bvol}/${barc}`)
+function redirectToDifferentPage(bid, bvol, barc, retrack = true){
+    let newURL;
+    if (barc && bvol){
+        newURL = `/book/${bid}/${bvol}/${barc}`;
+    }else{
+        newURL = `/book/${bid}/volumes`; // server path for different
+    }
+    retrack ? window.location.href = newURL : window.location.replace(newURL);
 }
+

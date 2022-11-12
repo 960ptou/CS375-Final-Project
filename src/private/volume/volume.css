@@ -1,0 +1,14 @@
+#container > div{
+    color : blue;
+    background-color: gray;
+}
+
+#container > div > a{
+    display :block;
+    background-color: aqua;
+}
+
+#title{
+    text-align: center;
+    font-weight: bolder;
+}
