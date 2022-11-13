@@ -19,6 +19,8 @@ pool.connect().then(function () {
 app.use(express.static( __dirname + "/../public/login"));
 app.use(express.static(__dirname + "/../public/signup"));
 app.use(express.static(__dirname + "/../public/home"));
+app.use(express.static(__dirname + "/../public/profile"));
+app.use(express.static(__dirname + "/../public/upload"));
 
 
 app.use(express.json());

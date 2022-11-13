@@ -15,6 +15,7 @@ document.getElementById("login").addEventListener("click", () => {
 		if (response.status === 200) {
 			result.textContent = "Login successful";
 			result.classList.remove("error");
+			window.location.href = "profile.html";
 		} else {
             response.json().then((error) => {
                 result.textContent = error.error;
