@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 faker = Faker()
 bookFolder = os.path.join(".","books") # make sure to run at home.. (not gonna go through the trouble..)
-if not(os.isdir(bookFolder)):
+if not(os.path.isdir(bookFolder)):
     os.mkdir(bookFolder)
 
 def main(numBooks): # will add a random id book in the books folder

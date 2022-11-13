@@ -48,6 +48,10 @@ npm run start
 bash ./dummy_setup/testUser.bash # adds a user "test" with pass "test"
 # Then you will need to login into the site to login
 "http://localhost:3000/login.html"
+# OR if you want the full experience of UI
+go to "http://localhost:3000/"
+and there is a login + signup..
+
 # You can't find a cookie, but in the broswer console do, you will see that if you are logged in.
 'fetch("/cred/loggedin").then((response) => {console.log(response)})'
 ```
