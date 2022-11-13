@@ -22,7 +22,7 @@
     - UI for the uploading of books (4hrs)
 
   - Commits:
-    - 
+    - [all major  commits at once]https://github.com/960ptou/CS375-Final-Project/commit/44105f6efe01b62eee519653e589fb936d60db3c
 
 - Weijie
   - Things Completed last week
