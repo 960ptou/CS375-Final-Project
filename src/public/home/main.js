@@ -1,6 +1,5 @@
 let result = document.getElementById("result");
 document.getElementById("search").addEventListener("click", () => {
-
     fetch("/search", {
         method: "POST",
         headers: {

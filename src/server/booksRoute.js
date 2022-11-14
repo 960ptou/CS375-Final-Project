@@ -9,6 +9,16 @@ const router = express.Router();
 
 const bookDir = path.join(process.cwd(), "books"); // running directory
 
+// async function parseBook(bookid){
+//     let bookDir = {}
+//     // https://stackoverflow.com/questions/40593875/using-filesystem-in-node-js-with-async-await
+//     let volumes = await fs.promises.readdir(path.join(bookDir, bookid))
+//     volumes.forEach(vol => {
+//         bookDir[vol] = await fs.promises.readdir(path.join(bookDir, bookid, vol))
+//     })
+//     return bookDir;
+// }
+
 function getMatchHashFromDir(src) {
     let hashMap = {};
 
