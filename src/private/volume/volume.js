@@ -63,5 +63,5 @@ function folderToName(folder){
 }
 
 function txtFileToName(txt){
-    return txt.substring(txt.indexOf("_") + 1).replace(".txt", "").replace("_", " ");
+    return txt.substring(txt.indexOf("-") + 1).replace(".txt", "").replaceAll("_", " ");
 }
