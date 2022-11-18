@@ -4,6 +4,15 @@
 #### [Template](https://www.figma.com/file/nJrHOSYPBl8C7SFzxBh3N7/groupB?node-id=0%3A1)
 
 
+#### Some notes:
+```
+Why do app.use(express.static( __dirname + "/../public/login")); for every file? Why not app.use(express.static( __dirname + ".../public")); ?
+
+A: 2 parts
+- I want to keep thing separated they won't need all to be within the public folder.
+- from the first part, I also want the route to be simple, so no login/login.html...
+```
+
 ### Run instruction
 ```bash
 # by default you will run "npm run" but for since db doesn't exist;
