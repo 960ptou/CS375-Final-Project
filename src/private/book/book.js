@@ -57,7 +57,7 @@ function splitTextContent(){
 function displayText(page, container = textContainer){
     // https://stackoverflow.com/questions/4607745/split-string-only-on-first-instance-of-specified-character
     let title = localStorage.getItem("title");
-    title = title.substring(title.indexOf("_") + 1).replace(".txt", "").replace("_", " ");
+    title = title.replace(".txt", "").replaceAll("_", " ");
     titleH.textContent = `${title} ${page == 1 ? "" : `(${page})` }`; // == over === because the type changes.
     let thisPageText = JSON.parse(localStorage.getItem(`text${page}`));
     textContainer.textContent = ""; // clear previous content

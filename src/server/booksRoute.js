@@ -6,14 +6,14 @@ const env = require("../env.json");
 const Pool = pg.Pool;
 const pool = new Pool(env);
 const router = express.Router();
-
+let glob = require("glob-promise");
 const bookDir = path.join(process.cwd(), "books"); // running directory
+
 
 function getMatchHashFromDir(src) {
     let hashMap = {};
-
     for (f of fs.readdirSync(src)) {
-        if (f === ".DS_Store") {
+        if (f === ".DS_Store" || f === "cover.png") {
             continue;
         }
         hashMap[f.match(/\d+/)[0]] = f;
@@ -21,18 +21,6 @@ function getMatchHashFromDir(src) {
     return hashMap;
 }
 
-function parseFolder(folder){
-    let dirs = fs.readdirSync(folder, "utf8");
-    let bookStruct = {};
-    dirs.forEach((dir) => {
-        bookStruct[dir] = [];
-        let files = fs.readdirSync(path.join(folder, dir), "utf8");
-        files.forEach( (f) =>{
-            bookStruct[dir].push(f);
-        });
-    })
-    return bookStruct;
-}
 
 function numberVol(path) {
     let dirInfo = fs.readdirSync(path);
@@ -80,7 +68,6 @@ router.post("/:bookid/:volume/:arc", (req, res) => {
     arc = arc < maxArcs ? arc : maxArcs; // No bigger than max arc
     txtFilePath = path.join(txtFilePath, getMatchHashFromDir(txtFilePath)[arc])
 
-
     fs.readFile(txtFilePath, "utf8", (err, data) => {
         if (err) {
             console.log(err);
@@ -99,39 +86,36 @@ router.post("/:bookid/:volume/:arc", (req, res) => {
     })
 })
 
+router.get("/:bookid/cover.png", (req, res)=>{
+    let bookid = String(req.params.bookid);
+    let bookPath = path.join(bookDir, bookid);
+    return res.sendFile(path.join(bookPath, "cover.png"))
+})
+
 router.post("/:bookid/volumes", (req, res) => {
     let bookid = String(req.params.bookid);
     let bookPath = path.join(bookDir, bookid);
-    let bookStruct = parseFolder(bookPath);
-    return res.json({
-        "bookid" : bookid,
-        "volumes" : bookStruct
-    })
+    let bookStruct = {};
+
+    glob(path.join(bookPath, "/*/*.txt")).then(files => { 
+        files.forEach(file => { 
+            let filePath = file.split("/");
+            let [volume, chapter] = [filePath[filePath.length - 2], filePath[filePath.length - 1]];
+            if (bookStruct[volume]){
+                bookStruct[volume].push(chapter);
+            }else{
+                bookStruct[volume] = [];
+                bookStruct[volume].push(chapter);
+            }
+        }); 
+
+        return res.json({
+            "bookid" : bookid,
+            "volumes" : bookStruct
+        })
+    });
 
 
-    fs.readdir(bookPath, "utf8", (err, dirs) =>{
-        if(err){
-            console.log(err);
-            return res.status(400).json({ error: "Book not found" });
-        }else{
-            let bookStruct = {};
-            dirs.forEach((dir) => {
-                bookStruct[dir] = [];
-                fs.readdir(path.join(bookPath, dir), (er, files) =>{
-                    if (er){
-                        console.log(er);
-                        return res.status(400).json({ error: "Error while parsing" });
-                    }
-                    files.forEach((f)=>{
-                        bookStruct[dir].push(f);
-                    })
-                })
-            })
-            return res.json({
-                "volumes" : bookStruct
-            });
-        }
-    })
 })
 
 

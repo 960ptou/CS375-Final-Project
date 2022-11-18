@@ -13,6 +13,7 @@ const router = express.Router();
 const BAD_REQUEST = 400;
 const SUCCESS = 200;
 const SERVER_ERROR = 500;
+const saltRounds = 3;
 
 let sessionCookies = {
     // cookieId : userid -> for storing login
@@ -38,24 +39,30 @@ router.post("/signup", (req, res) => {
         if (result.rows.length !== 0) { // exists
             return res.status(401).json({"error" : "Username Exist"});
         }else{
-            bcrypt// adding
-                .hash(userpass, 10) // testing now
-                .then((hashedPass) => {
-                    let userId = pwutil.randNumID();
-                    pool.query(
-                        "INSERT INTO users (userid, username, hashpass) VALUES ($1, $2, $3)",
-                        [userId, username, hashedPass]
-                    ).then(()=>{
-                        console.log(username , "account created");
-                        return res.status(SUCCESS).send();
-                    }).catch((error)=>{
-                        console.log(error);
-                        return res.status(SERVER_ERROR).json({"error": "Server DB error"});
-                    })
-                }).catch((error) =>{
-                    console.log(error);
-                    return res.status(SERVER_ERROR).json({"error": "Server error"});;
-                })
+            bcrypt.genSalt(saltRounds,(err, salt)=>{
+                if (err){
+                    return res.status(401).json({"error" : "Salt failed"});
+                }else{
+                    bcrypt// adding
+                        .hash(userpass, salt)
+                        .then((hashedPass) => {
+                            let userId = pwutil.randNumID();
+                            pool.query(
+                                "INSERT INTO users (userid, username, hashpass) VALUES ($1, $2, $3)",
+                                [userId, username, hashedPass]
+                            ).then(()=>{
+                                console.log(username , "account created");
+                                return res.status(SUCCESS).send();
+                            }).catch((error)=>{
+                                console.log(error);
+                                return res.status(SERVER_ERROR).json({"error": "Server DB error"});
+                            })
+                        }).catch((error) =>{
+                            console.log(error);
+                            return res.status(SERVER_ERROR).json({"error": "Server error"});;
+                        })
+                }
+            })
         }
     });
 });

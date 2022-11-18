@@ -12,7 +12,6 @@ fetch(window.location.pathname,{method : "POST"}).then((response) =>{
             let sortedVolumes = sortDictAry(sortedKeys, volumes);
 
             let volumeInd = 1;
-            console.log(sortedKeys);
 
             sortedKeys.forEach( volName => {
                 container.appendChild( displayArcLinks(volName, sortedVolumes[volName], volumeInd) );
@@ -63,5 +62,5 @@ function folderToName(folder){
 }
 
 function txtFileToName(txt){
-    return txt.substring(txt.indexOf("_") + 1).replace(".txt", "").replace("_", " ");
+    return txt.substring(txt.indexOf("-") + 1).replace(".txt", "").replaceAll("_", " ");
 }
