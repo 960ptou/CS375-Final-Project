@@ -7,39 +7,38 @@ const pool = new Pool(env);
 const router = express.Router();
 const searchUtils = require("./searchUtils");
 
+// U can only get non-private book
+router.get("/",  (req, res)=> {
+    // https://www.freecodecamp.org/news/fuzzy-string-matching-with-postgresql/
+    // PLEASE MAKE SURE THAT THE SERVER HAS EXTENSION INSTALLED
+    let search = req.query.queryString;
 
-router.post("/",  (req, res)=> {
-    let search = req.body.search;
-    let guessSearchQuery;
-
-    if (searchUtils.isSearchByGenre(search)){
-        guessSearchQuery = "select bookid from book_genre where genre = $1";
+    if (search === "main"){
+        guessSearchQuery = "select bookid, bookname,book_language from book where is_private = false";
+    }else if (searchUtils.isSearchByGenre(search)){
+        guessSearchQuery = "select bookid, bookname,book_language from book where is_private = false and bookid in (select bookid from book_genre where genre = $1)";
     }else if (searchUtils.isSearchById(search)){
-        guessSearchQuery = "select bookid from book where bookid = $1";
-    } else{
-        guessSearchQuery = "select bookid from book where bookname like $1%"
+        guessSearchQuery = "select bookid, bookname,book_language from book where bookid = $1 and is_private = false";
+    } else{ // the idea is that a author will unlikely to have a same name as book... fuzzy search.
+        guessSearchQuery = "select bookid, bookname,book_language from book where (similarity(bookname,$1) > 0.4 or similarity(author,$1) > 0.4) and is_private = false";
     }
 
-
     if (search){
+        console.log(guessSearchQuery, search);
         pool.query(
-            "SELECT bookname FROM book WHERE search = $1",
-            [search]
+            guessSearchQuery,
+            search !== "main" ? [search] : [] 
         ).then((result) => {
             console.log(result.rows);
-            return res.status(200).send();
-        }
-        ).catch((error) => {
+            return res.status(200).json({books : result.rows});
+        }).catch((error) => {
             console.log(error);
-            return res.status(500).send("Book not found");
+            return res.status(500).send("Query Error");
         });
     } else {
         return res.status(400).send("Invalid search");
     }
 });
-
-
-
 
 
 module.exports = router;

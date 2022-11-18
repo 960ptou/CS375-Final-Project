@@ -50,7 +50,7 @@ def users(n) -> list: # I want the actual password
     return hashs, reals
 
 def bookDetails(bookid):
-    bookname = "_".join(faker.words())
+    bookname = " ".join(faker.words()
     author = random.choice([faker.name_female(), faker.name_male()])
     # https://omniglot.com/language/names.htm
     rating = round(random.random() * 5, 2)

@@ -13,7 +13,7 @@ const bookDir = path.join(process.cwd(), "books"); // running directory
 function getMatchHashFromDir(src) {
     let hashMap = {};
     for (f of fs.readdirSync(src)) {
-        if (f === ".DS_Store") {
+        if (f === ".DS_Store" || f === "cover.png") {
             continue;
         }
         hashMap[f.match(/\d+/)[0]] = f;
@@ -67,7 +67,6 @@ router.post("/:bookid/:volume/:arc", (req, res) => {
     let maxArcs = numberVol(txtFilePath);
     arc = arc < maxArcs ? arc : maxArcs; // No bigger than max arc
     txtFilePath = path.join(txtFilePath, getMatchHashFromDir(txtFilePath)[arc])
-    fs.readFile
 
     fs.readFile(txtFilePath, "utf8", (err, data) => {
         if (err) {
@@ -87,12 +86,18 @@ router.post("/:bookid/:volume/:arc", (req, res) => {
     })
 })
 
+router.get("/:bookid/cover.png", (req, res)=>{
+    let bookid = String(req.params.bookid);
+    let bookPath = path.join(bookDir, bookid);
+    return res.sendFile(path.join(bookPath, "cover.png"))
+})
+
 router.post("/:bookid/volumes", (req, res) => {
     let bookid = String(req.params.bookid);
     let bookPath = path.join(bookDir, bookid);
     let bookStruct = {};
 
-    glob(path.join(bookPath, "/*/*")).then(files => { 
+    glob(path.join(bookPath, "/*/*.txt")).then(files => { 
         files.forEach(file => { 
             let filePath = file.split("/");
             let [volume, chapter] = [filePath[filePath.length - 2], filePath[filePath.length - 1]];

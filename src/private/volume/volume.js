@@ -12,7 +12,6 @@ fetch(window.location.pathname,{method : "POST"}).then((response) =>{
             let sortedVolumes = sortDictAry(sortedKeys, volumes);
 
             let volumeInd = 1;
-            console.log(sortedKeys);
 
             sortedKeys.forEach( volName => {
                 container.appendChild( displayArcLinks(volName, sortedVolumes[volName], volumeInd) );
