@@ -1,2 +1,5 @@
 Faker
 tqdm
+glob
+bcrypt
+Pillow

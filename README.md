@@ -42,8 +42,16 @@ python dummy_setup/makeDummybooks.py N # N is the number of random books to gene
 # first, make a directory called books in the same place as root
 # download https://drive.google.com/drive/folders/1iyjwiT2JEcub1a-WFCVo-FsfX37N-Csu?usp=sharing (a fake book generated via faker) -> put that in the books folder
 
+# run the follow to get cvs will generated data 
+python dummy_setup/fillDatabaseFromBooks.py
+bash dummy_setup/filldb.bash
+
 # start server
 npm run start
+
+# At this point you can really just go to
+"http://localhost:3000/", it will have some random books with images to links
+
 
 # to see that book, please go to 
 `http://localhost:3000/book/BOOKID/volumes`

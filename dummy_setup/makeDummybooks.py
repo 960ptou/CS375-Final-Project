@@ -1,4 +1,3 @@
-from genericpath import isdir
 from random import randint
 import os, sys
 from faker import Faker # random data

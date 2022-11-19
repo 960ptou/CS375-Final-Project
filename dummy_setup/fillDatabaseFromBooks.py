@@ -3,7 +3,6 @@
 
 from faker import Faker # random data
 import random
-import csv
 import os, sys
 from glob import glob
 from tqdm import tqdm
