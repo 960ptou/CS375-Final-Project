@@ -33,7 +33,11 @@
       - removing private books (if they have a public book they can't remove it-> I hate that) ~ 2hrs
     - user option - background | font | color (with localstorage to long term) ~2hrs
     - cleaning up (since I want to finish it) ~ 3-4hrs
-  
+    - 
+  - Commits:
+    - [Adding search in main + main page displaying book links](https://github.com/960ptou/CS375-Final-Project/commit/72a4cafc9438b9d2e62511bc6cac9d3ee9b7b944)
+      - [the above is split into 2 -> this is the minor one](https://github.com/960ptou/CS375-Final-Project/commit/e8c0e1219eb0d6d43a88d29177e70d37ec56bc4f)
+    - [adding script for filling up database book+user info](https://github.com/960ptou/CS375-Final-Project/commit/623b71940824232a24514ff982338b74c90042a2)
 
 #### 3. Logisitical or technical obstacles
 - Weijie Chen
