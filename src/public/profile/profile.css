@@ -1,3 +1,27 @@
+.main {
+  overflow: hidden;
+  padding: 20px 10px;
+  
+}
+
+
+
+.main [type="text"] {
+    display: block;
+     margin : 0 auto;
+    width: 60%;
+    padding: 12px 20px;
+}
+
+.main [id="container"] {
+  margin-right: 0 auto;
+}
+
+.main [id="search"] {
+    display: block;
+        margin : 0 auto;
+}
+
 .head{
 
 background-color: #000000;
@@ -5,13 +29,39 @@ background-color: #000000;
 }
 
 body{
-  size: 5cm;
+  size: 3cm;
   position: left;
 
 }
-.profile, .profilepic{
-  size: 5cm;
-  position: left;
 
+
+.avatar{
+  height: 80%; 
+  width: 200px; 
+  position: center;
+
+}
+
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 200px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* displaying images */
+img {
+  width: 128px;
+  height: 196px;
+  margin: 20px;
+}
+
+#container {
+  display: flex;
 }
 
