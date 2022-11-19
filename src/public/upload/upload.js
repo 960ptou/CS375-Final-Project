@@ -3,7 +3,29 @@ const dropArea = document.querySelector(".drag-area"),
 dragText = dropArea.querySelector("header"),
 button = dropArea.querySelector("button"),
 input = dropArea.querySelector("input");
+const btn = document.getElementById("upload");
 let file; //this is a global variable and we'll use it inside multiple functions
+
+btn.click(function(){
+  const author = document.getElementById("auth").value;
+  const language = document.getElementById("language").value;
+  const id = document.getElementById("bkid").value;
+  const name = document.getElementById("bkname").value;
+  const private = document.getElementById("private").checked;
+
+  //addbook to database
+  $.ajax({
+    url: "/api/books",
+    type: "POST",
+    data: {
+
+    },
+    success: function(data){
+      console.log(data);
+    }
+  })
+})
+
 
 button.onclick = ()=>{
   input.click(); //if user click on the button then the input also clicked
