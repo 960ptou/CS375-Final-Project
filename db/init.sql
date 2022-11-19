@@ -29,3 +29,5 @@ create table ownby(
     foreign key (bookid) references book(bookid) on delete cascade,
     foreign key (userid) references users(userid) 
 );
+
+create extension if not exists pg_trgm;
