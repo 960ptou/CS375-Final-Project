@@ -15,7 +15,6 @@ A: 2 parts
 
 ### Run instruction
 ```bash
-# by default you will run "npm run" but for since db doesn't exist;
 # create a env.json that looks like
 Replace the username and password (make sure account has proper crediential); keep the other ones.
 '
@@ -27,6 +26,9 @@ Replace the username and password (make sure account has proper crediential); ke
     "port": 5432
 }
 '
+pip install -r dummy_setup/requirements.txt # please note, pip19.x might not work. -> update your pip
+npm install
+
 # in the project directory
 bash ./dummy_setup/refreshdb.bash # refresh the db
 
@@ -34,9 +36,9 @@ bash ./dummy_setup/refreshdb.bash # refresh the db
 
 # so just adding the books to the 'books' folder will do it.
 # option 1 script (generate random txt via Faker)
-pip install -r dummy_setup/requirements.txt
 # then to generate some random content books
 python dummy_setup/makeDummybooks.py N # N is the number of random books to generate
+
 
 # option 2 
 # first, make a directory called books in the same place as root
