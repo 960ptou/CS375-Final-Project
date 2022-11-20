@@ -8,6 +8,7 @@ from glob import glob
 from tqdm import tqdm
 import bcrypt
 import datetime
+import csv
 
 
 faker = Faker()
@@ -49,7 +50,7 @@ def users(n) -> list: # I want the actual password
     return hashs, reals
 
 def bookDetails(bookid):
-    bookname = " ".join(faker.words()
+    bookname = " ".join(faker.words())
     author = random.choice([faker.name_female(), faker.name_male()])
     # https://omniglot.com/language/names.htm
     rating = round(random.random() * 5, 2)
