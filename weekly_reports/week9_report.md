@@ -10,13 +10,19 @@
 #### 2 Nextweek.
 - Adesewa
   - Things Completed last week
-    - ...
+    - Profile UI (5 hrs)
+    -Add book(2 hrs)
+    - upload api (8 hrs)
 
   - Things to be done next week:
-    - ...
+    - make all api from lastweek work properly (6 hrs)
+    -link to database (3 hrs)
+    -complete profile functionality (6 hrs)
 
   - Commits:
-    - ...
+    - https://github.com/960ptou/CS375-Final-Project/commit/919cf8e3cda0770134725606595c4de035531302
+    -https://github.com/960ptou/CS375-Final-Project/commit/f2595b71ae8a4f2bed61f0d4efbb706d5788c937
+    - https://github.com/960ptou/CS375-Final-Project/commit/407fb4c271afa3327d3b09311d0b7fa2d6991b99
 
 - Weijie
   - Things Completed last week
@@ -44,12 +50,20 @@
   - was actually quick simple after finding the extension for fuzzy search
 
 - Adesewa Adesida
-  - ...
+  - I'm locked out of my main postgres account so I have trouble loading our project for testing
+  - having trouble linking the new upload to the database because it is very specific form of input
+  -drag and drop clicks and drags but does not open
+  
 
 
 #### 4.Reflection
 - So the reading part of the code is done (90% need some styling for UI), there's the upload book, private delete, reading private books.. 
 
+- (sewa) Need to do more research into linking files to database, adding and deletion etc
+
 
 #### 5. question for professors
 - (weijie) -> I have 2 route, "cred" and "search", for private search I need a dictionary (for cookie session) from the credientialRoute.js in the searchRoute.js. (-> I don't want to store session in database..)
+
+- is there a way we can specifically collect folders in our upload api
+
