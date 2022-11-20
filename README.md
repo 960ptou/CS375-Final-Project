@@ -54,6 +54,9 @@ npm run start
 # At this point you can really just go to
 "http://localhost:3000/", it will have some random books with images to links
 
+# Please note, while the search does work, I have got the proper actions
+# done. So you can only see what the server is sending via the console
+
 
 # to see that book, please go to 
 `http://localhost:3000/book/BOOKID/volumes`
