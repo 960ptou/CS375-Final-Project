@@ -1,1 +1,1 @@
-psql -d postgres postgres -a -f ./dummy_setup/loadTodb.sql # please run thing in order (note to me)
+psql -d test -a -f ./dummy_setup/loadTodb.sql # please run thing in order (note to me)
