@@ -24,7 +24,6 @@ router.get("/",  (req, res)=> {
     }
 
     if (search){
-        console.log(guessSearchQuery, search);
         pool.query(
             guessSearchQuery,
             search !== "main" ? [search] : [] 

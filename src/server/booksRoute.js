@@ -52,9 +52,14 @@ router.get("/:bookid/:volume/book.js", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "private", "book", "book.js"));
 });
 
+router.get("/:bookid/:volume/uiStorage.js",(req, res) => {
+    res.sendFile(path.join(__dirname, "..", "private", "book", "uiStorage.js"));
+});
+
 router.get("/:bookid/:volume/:arc", (req, res) => { // getting single book
     res.sendFile(path.join(__dirname, "..", "private", "book", "book.html"));
 });
+
 
 router.post("/:bookid/:volume/:arc", (req, res) => {
     let bookid = String(req.params.bookid);
@@ -97,25 +102,33 @@ router.post("/:bookid/volumes", (req, res) => {
     let bookPath = path.join(bookDir, bookid);
     let bookStruct = {};
 
-    glob(path.join(bookPath, "/*/*.txt")).then(files => { 
-        files.forEach(file => { 
-            let filePath = file.split("/");
-            let [volume, chapter] = [filePath[filePath.length - 2], filePath[filePath.length - 1]];
-            if (bookStruct[volume]){
-                bookStruct[volume].push(chapter);
-            }else{
-                bookStruct[volume] = [];
-                bookStruct[volume].push(chapter);
-            }
-        }); 
-
-        return res.json({
-            "bookid" : bookid,
-            "volumes" : bookStruct
-        })
-    });
-
-
+    pool.query(
+        "select * from book where bookid = $1",
+        [bookid]
+    ).then(result =>{
+        if (result.rows.length === 0) { // 0 or 1
+            return res.status(401).json({"error" : "Book not in db"});
+        }else{
+            glob(path.join(bookPath, "/*/*.txt")).then(files => { 
+                files.forEach(file => { 
+                    let filePath = file.split("/");
+                    let [volume, chapter] = [filePath[filePath.length - 2], filePath[filePath.length - 1]];
+                    if (bookStruct[volume]){
+                        bookStruct[volume].push(chapter);
+                    }else{
+                        bookStruct[volume] = [];
+                        bookStruct[volume].push(chapter);
+                    }
+                });
+        
+                return res.json({
+                    "bookid" : bookid,
+                    "volumes" : bookStruct,
+                    "bookinfo" : result.rows[0]
+                })
+            });
+        }
+    })
 })
 
 

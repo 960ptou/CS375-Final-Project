@@ -9,30 +9,62 @@
 </head>
 
 <body>
-    <h5 id ="titleH"></h5>
-    <div id="content"> 
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
-        <p> Default </p>
+    <h5 id="titleH"></h5>
+
+    <div id="style_bar" hidden>
+        <div id="font_size">
+            <button id="font-open">Font Size</button>
+            <input type="range" min="8" max="20" value="13" step="1" id="font_size_bar" orient="vertical" hidden>
+        </div>
+
+        <div id="font_family">
+            <select id="font_family_select">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman" selected>Times New Roman</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+        </div>
+
+        <div id="font_color">
+            <select id="font_color_select">
+                <option value="black" selected>black</option>
+                <option value="green">green</option>
+                <option value="red">red</option>
+                <option value="yellow">yellow</option>
+                <option value="blue">blue</option>
+                <option value="white">white</option>
+            </select>
+        </div>
+
+        <div id="background_color">
+            <select id="background_color_select">
+                <option value="#ece6d7" selected> default </option>
+                <option value="black">black</option>
+                <option value="green">green</option>
+                <option value="red">red</option>
+                <option value="yellow">yellow</option>
+                <option value="blue">blue</option>
+                <option value="white">white</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div id="content">
         <p> Default </p>
     </div>
 
-    
+
     <div id="navigate">
-        <button id="prevPage" class="blue"> Previous Page </button>
-        <button id="nextPage" class="blue"> Next Page </button>
+        <button id="prevPage" class="button-color"> Last Page </button>
+        <button id="volumes" class="button-color"> Home </button>
+        <button id="nextPage" class="button-color"> Next Page </button>
     </div>
 
 
     <script src="book.js"></script>
+    <script src="uiStorage.js"></script>
 </body>
 
 </html>
