@@ -104,12 +104,13 @@ router.post("/login", (req, res) =>{
 
 router.get("/loggedin", (req,res) => {// Later for sending user info, now just saying logged in or not
     let session = req.cookies;
+    
 
     let token = session.sessionToken;
     console.log(sessionCookies[token]);
 
     if (sessionCookies[token]){
-        res.status(SUCCESS).send("You are logged in");
+        return res.json({"userid" : sessionCookies[token]});
     }else{
         res.status(400).json({"error" : "Not logged in"});
     }
