@@ -9,7 +9,7 @@ document.getElementById("search").addEventListener("click", () => {
 getBooks("main");
 
 function getBooks(queryString){
-    fetch(`/search?queryString=${queryString}`).then((response) => {
+    fetch(`/search?queryString=${queryString || "main"}`).then((response) => {
         if (response.status === 200) {
             response.json().then(body =>{
                 let books = body.books;

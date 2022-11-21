@@ -28,7 +28,6 @@ router.get("/",  (req, res)=> {
             guessSearchQuery,
             search !== "main" ? [search] : [] 
         ).then((result) => {
-            console.log(result.rows);
             return res.status(200).json({books : result.rows});
         }).catch((error) => {
             console.log(error);

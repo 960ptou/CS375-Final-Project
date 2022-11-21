@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 
+
 const port = 3000;
 const hostname = "localhost";
 const env = require("../env.json");
@@ -25,13 +26,16 @@ app.use(express.static(__dirname + "/../public/upload"));
 app.use(express.json());
 app.use(cookieParser());
 
+
 const credRoute = require(__dirname + "/credientialRoute");
 const bookRoute = require(__dirname + "/booksRoute");
 const searchRoute = require(__dirname + "/searchRoute");
+const fileTransRoute = require(__dirname +"/fileTransferRoute")
+
 app.use("/cred", credRoute);
 app.use("/book", bookRoute);
 app.use("/search", searchRoute);
-
+app.use("/file", fileTransRoute);
 
 const BAD_REQUEST = 400;
 const SUCCESS = 200;
