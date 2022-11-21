@@ -62,13 +62,28 @@
     .sidenav a {font-size: 18px;}
   }
 
-/* displaying images */
-img {
-  width: 128px;
-  height: 196px;
+  /* https://stackoverflow.com/questions/22592064/how-to-align-text-below-an-image-in-css */
+a{
   margin: 20px;
 }
 
-#container {
-  display: flex;
+img {
+  width: 128px;
+  height: 196px;
+  background: gray;
+}
+
+a > span {
+  word-wrap: break-word;
+  margin-left: 20px;
+  width: 128px;
+  display: block;
+  
+}
+
+
+#container > div{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
 }

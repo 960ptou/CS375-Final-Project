@@ -7,6 +7,7 @@ fetch(window.location.pathname,{method : "POST"}).then((response) =>{
     if(response.status === 200){
         response.json().then((body)=>{
             bookid = body.bookid;
+            title.textContent = body.bookinfo.bookname;
             let volumes = body.volumes;
             let sortedKeys = sortDict(volumes);
             let sortedVolumes = sortDictAry(sortedKeys, volumes);
@@ -44,7 +45,9 @@ function sortDictAry(ary, dict){
 
 function displayArcLinks(title, arcs, volumeInd){
     let volumeDiv = document.createElement("div");
-    volumeDiv.textContent = folderToName(title);
+    let volTitle = document.createElement("span");
+    volTitle.textContent = folderToName(title);
+    volumeDiv.appendChild(volTitle);
     let arcInd = 1;
 
     arcs.forEach(arc => {

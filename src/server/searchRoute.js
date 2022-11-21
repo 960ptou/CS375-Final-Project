@@ -24,12 +24,10 @@ router.get("/",  (req, res)=> {
     }
 
     if (search){
-        console.log(guessSearchQuery, search);
         pool.query(
             guessSearchQuery,
             search !== "main" ? [search] : [] 
         ).then((result) => {
-            console.log(result.rows);
             return res.status(200).json({books : result.rows});
         }).catch((error) => {
             console.log(error);
