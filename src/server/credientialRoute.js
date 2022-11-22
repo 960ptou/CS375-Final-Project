@@ -8,7 +8,10 @@ const Pool = pg.Pool;
 const pool = new Pool(env);
 const userCred = require(__dirname + "/userCred");
 const pwutil = userCred.passwordUtils ;
+const cookieParser = require("cookie-parser");
 const router = express.Router();
+
+router.use(cookieParser());
 
 const BAD_REQUEST = 400;
 const SUCCESS = 200;
@@ -113,5 +116,15 @@ router.get("/loggedin", (req,res) => {// Later for sending user info, now just s
     }
 });
 
+// https://stackoverflow.com/questions/18875292/passing-variables-to-the-next-middleware-using-next-in-express-js
+function token2id(req, res, next){
+    let session = req.cookies;
+    let token = session.sessionToken;
+    res.locals.userid = sessionCookies[token]
+    next();
+}
 
-module.exports = router;
+module.exports = {
+    credRoute : router,
+    authSession : token2id
+}

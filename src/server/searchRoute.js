@@ -14,13 +14,13 @@ router.get("/",  (req, res)=> {
     let search = req.query.queryString;
 
     if (search === "main"){
-        guessSearchQuery = "select bookid, bookname,book_language from book where is_private = false";
+        guessSearchQuery = "select * from book where is_private = false";
     }else if (searchUtils.isSearchByGenre(search)){
-        guessSearchQuery = "select bookid, bookname,book_language from book where is_private = false and bookid in (select bookid from book_genre where genre = $1)";
+        guessSearchQuery = "select * from book where is_private = false and bookid in (select bookid from book_genre where genre = $1)";
     }else if (searchUtils.isSearchById(search)){
-        guessSearchQuery = "select bookid, bookname,book_language from book where bookid = $1 and is_private = false";
+        guessSearchQuery = "select * from book where bookid = $1 and is_private = false";
     } else{ // the idea is that a author will unlikely to have a same name as book... fuzzy search.
-        guessSearchQuery = "select bookid, bookname,book_language from book where (similarity(bookname,$1) > 0.4 or similarity(author,$1) > 0.4) and is_private = false";
+        guessSearchQuery = "select * from book where (similarity(bookname,$1) > 0.4 or similarity(author,$1) > 0.4) and is_private = false";
     }
 
     if (search){

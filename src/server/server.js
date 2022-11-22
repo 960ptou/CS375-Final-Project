@@ -27,12 +27,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-const credRoute = require(__dirname + "/credientialRoute");
+const cred = require(__dirname + "/credientialRoute");
 const bookRoute = require(__dirname + "/booksRoute");
 const searchRoute = require(__dirname + "/searchRoute");
 const fileTransRoute = require(__dirname +"/fileTransferRoute")
 
-app.use("/cred", credRoute);
+app.use("/cred", cred.credRoute);
 app.use("/book", bookRoute);
 app.use("/search", searchRoute);
 app.use("/file", fileTransRoute);
