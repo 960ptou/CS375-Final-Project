@@ -1,3 +1,4 @@
+
 //selecting all required elements
 const dropArea = document.querySelector(".drag-area");
 const dragText = dropArea.querySelector("header");
@@ -6,24 +7,51 @@ const input = dropArea.querySelector("input");
 const btn = document.getElementById("upload");
 let formData;
 let bookAry = [];
+let gens = [];
 
-btn.click(function () {
-  const author = document.getElementById("auth").value;
-  const language = document.getElementById("language").value;
-  const name = document.getElementById("bkname").value;
-  const private = document.getElementById("private").checked;
-  const genre = document.getElementById("gen").value;
-  
-  const user = fetch("/loggedin").then((response) => {
-    if (response.status === 200) {
-      response.json().then(body => {
-        return body.userid;
+btn.addEventListener("click",  ()=>{
+  const bkauthor = document.getElementById("author").value;
+  const bklanguage = document.getElementById("language").value;
+  const bktitle = document.getElementById("name").value;
+  const bkprivate = document.getElementById("private").checked;
+
+  let metaInfo = {
+    author : bkauthor,
+    language : bklanguage,
+    title : bktitle,
+    private : bkprivate,
+    genres : gens,
+  }
+  console.log(metaInfo);
+  formData.append("meta", JSON.stringify(metaInfo));
+  fetch("/file/upload", {
+    method : "POST",
+    body:formData
+  }).then((response)=>{
+    if (response.status === 200){
+      console.log("Success");
+    }else{
+      response.json().then((err)=>{
+        console.log("ERROR", err);
       })
-    } else {
-      return null;
     }
-  });
+    formData = new FormData();
+  })
 })
+
+let genresBox = document.getElementById("genres")
+let displayGenres = document.getElementById("selected-genres");
+genresBox.addEventListener("change", ()=>{
+  let displayDiv = document.createElement("div");
+  if (gens.length >= 5 || gens.includes(genresBox.value)){
+      genresBox.value = "";
+      return;
+  }
+  displayDiv.textContent = genresBox.value;
+  displayGenres.appendChild(displayDiv);
+  gens.push(genresBox.value)
+  genresBox.value = "";
+});
 
 
 button.onclick = () => {
@@ -83,8 +111,10 @@ dropArea.addEventListener("drop", (event) => {
   loadFiles(items);
 }, false);
 
+
 function loadFiles(items){
   formData = new FormData();
+  bookAry = []
 
   if(items[0]){
     let item = items[0].webkitGetAsEntry();

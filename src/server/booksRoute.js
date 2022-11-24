@@ -132,14 +132,5 @@ router.post("/:bookid/volumes", (req, res) => {
 })
 
 
-// router.post("", (req, res) => {
-//     let authorName;
-//     let bookLanguage;
-//     let bookName;
-//     let arcs;
-//     let genres;
-
-// });
-
 
 module.exports = router;

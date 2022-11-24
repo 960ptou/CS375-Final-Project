@@ -19,14 +19,50 @@
 
   <!-- sewa-->
   <div class="filename">
-    <input type="text" id="author " value="James "></input>
-    <div id="auth">&nbsp;</div>
-    <input type="text" id="id" value="15-00065"></input>
-    <div id="bkid">&nbsp;</div>
-    <input type="text" id="name" value="chasing red "></input>
-    <div id="bkname">&nbsp;</div>
-    <input type="text" id="genre" value="action "></input>
-    <div id="gen">&nbsp;</div>
+    <label for="author"> Author :</label>
+    <input type="text" id="author" value="James"></input>
+    <div>&nbsp;</div>
+    <label for="name"> Title :</label>
+    <input type="text" id="name" value="chasing red"></input>
+    <div>&nbsp;</div>
+
+    <label for="lanugage"> Language :</label>
+    <select id="language">
+      <option value="English" selected>English</option>
+      <option value="中文">中文</option>
+      <option value="日本語">日本語</option>
+      <option value="कोँइच">कोँइच</option>
+    </select>
+    <div>&nbsp;</div>
+    
+    <div>
+      <label for="genres">Genres(max 5)</label>
+      <br>
+      <input list="genres-list" name="genres" id="genres">
+      <datalist id="genres-list">
+      </datalist>
+    </div>
+
+    <div id="selected-genres">
+
+    </div>
+
+    <script>
+      let genList = document.getElementById("genres-list");
+      const genlist = ['drama', 'fable', 'fairy tale', 
+          'fantasy', 'fiction', 'fictionin verse', 
+          'folklore', 'historical fiction', 'horror',
+          'humor', 'legend', 'mystery', 'mythology', 
+          'poetry', 'realistic fiction', 'science fiction', 
+          'short story', 'tallTale', 'biography', 'essay', 
+          'narrative nonfiction', 'nonfiction', 'speech']
+      genlist.forEach(gen=>{
+        let opt = document.createElement("option");
+        opt.value = gen;
+        opt.textContent = gen;
+        genList.appendChild(opt);
+      })
+    </script>
 
     <!--tick box if private-->
     <input type="checkbox" id="private" name="private" value="private">

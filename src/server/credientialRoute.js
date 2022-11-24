@@ -11,7 +11,6 @@ const pwutil = userCred.passwordUtils ;
 const cookieParser = require("cookie-parser");
 const router = express.Router();
 
-router.use(cookieParser());
 
 const BAD_REQUEST = 400;
 const SUCCESS = 200;

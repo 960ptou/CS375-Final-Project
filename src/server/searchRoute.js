@@ -39,4 +39,9 @@ router.get("/",  (req, res)=> {
 });
 
 
+router.get("/private", (res, req) =>{
+    
+})
+
+
 module.exports = router;
