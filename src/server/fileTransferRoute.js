@@ -20,8 +20,6 @@ const bookDir = path.join(process.cwd(), "books"); // running directory
 router.post("/upload", (req, res) =>{
     let uid = res.locals.userid;
     // IMPORTANT remove this
-    uid = 1;
-
     if (!uid){
         return res.status(400).json({"error": "not logged in"});
     }
