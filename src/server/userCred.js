@@ -28,7 +28,7 @@ class passwordUtils{
     minutesFromNow(minutes){
         let now = new Date();
         let resultTime = now.getTime();
-        resultTime += minutes * 1000; // js format
+        resultTime += minutes * 1000 * 60; // js format
         now.setTime(resultTime);
         return now;
     }

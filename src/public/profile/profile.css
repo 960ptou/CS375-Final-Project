@@ -4,8 +4,6 @@
   
 }
 
-
-
 .main [type="text"] {
     display: block;
      margin : 0 auto;
@@ -61,7 +59,54 @@ img {
   margin: 20px;
 }
 
-#container {
-  display: flex;
+
+.book-url {
+  margin: 20px;
+  text-decoration: none; 
 }
 
+
+.book-url > .cover {
+  width: 128px;
+  height: 196px;
+  background: gray;
+}
+
+.book-url > .title {
+  overflow: hidden;
+  margin-left: 20px;
+  inline-size: 128px;
+  display: block; 
+  color : black;
+}
+
+.book-url > .author {
+  margin-left: 20px;
+  width: 128px;
+  display: block; 
+  color : gray;
+}
+
+
+#container {
+  margin-top : 30px;
+  /* away from side nag */
+  margin-left: 200px; 
+}
+
+#container > div{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+
+/* https://stackoverflow.com/questions/22543336/css-how-to-position-a-x-sign-at-the-top-right-corner-of-the-img-element */
+.close:before {
+  content: '✕';
+}
+.close {
+  position: relative;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}

@@ -20,13 +20,9 @@ const bookDir = path.join(process.cwd(), "books"); // running directory
 router.post("/upload", (req, res) =>{
     let uid = res.locals.userid;
     // IMPORTANT remove this
-    if (!uid){
-        return res.status(400).json({"error": "not logged in"});
-    }
+    if (!uid){return res.status(400).json({"error": "not logged in"});}
 
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).json({"error" : 'No files were uploaded'});
-    }
+    if (!req.files || Object.keys(req.files).length === 0) {return res.status(400).json({"error" : 'No files were uploaded'});}
     let info = JSON.parse(req.body.meta);
     
 
@@ -49,8 +45,8 @@ router.post("/upload", (req, res) =>{
         }
     })
     
-    // console.log([bookname,author,language,private,gens])
-    
+    // I feel both sorry and suprising for this code, I manage to get this out without async
+    // but also I couldn't just use async ...    
     let now = new Date().toISOString().slice(0, 19).replace('T', ' ');// https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
     pool.query(
         "insert into book(bookname, author, book_language, book_upload ,is_private) values($1, $2,$3,$4,$5) returning bookid",
@@ -137,17 +133,23 @@ router.post("/delete", (req, res) =>{
     }
 
     pool.query(
-        "delete from book where bookid = (select bookid from ownby where bookid = $1 and userid = $2) and private = false"
+        "delete from book where bookid = (select bookid from ownby where bookid = $1 and userid = $2) and is_private = true returning bookid",
+        [bid, uid]
         ).then(result =>{
-            // deleting book from folder -> the hope is that they can't get through to here if bid is fake
-            fs.rmdir(path.join(bookDir, bid),{recursive: true, force: true} ,error=>{
-                if (error ){// I don't really care you actually removed the book, it will be removed in the db
-                    console.log(error);
-                }else{
-                    console.log(bookDir, "->", bid, "was removed");
-                }
-            });
-            res.json({"message" : `book id ${bid} was removed by you`});
+            if (result.rows.length === 1){
+                // deleting book from folder -> the hope is that they can't get through to here if bid is fake
+                fs.rm(path.join(bookDir, bid),{recursive: true, force: true} ,error=>{
+                    if (error ){// I don't really care you actually removed the book, it will be removed in the db
+                        console.log(error);
+                    }else{
+                        console.log(bookDir, "->", bid, "was removed");
+                    }
+                });
+                res.json({"message" : `book id ${bid} was removed by you`});
+            }else{
+                console.log(result);
+                res.status(400).json({"message" : `book id ${bid} is not removed`});
+            }
         }).catch(err =>{
             console.log(err);
             res.status(400).json({"error": "book delete not successful"});
@@ -157,17 +159,8 @@ router.post("/delete", (req, res) =>{
 
 
 router.get("/test", (req, res) =>{
+    console.log(req.query.bid, "bookid");
     console.log(res.locals.userid, "hello");
-    res.send();
-})
-
-router.post("/test", (req, res) =>{
-    console.log(res.locals.userid);
-    console.log(Object.keys(req.body.meta));
-
-    Object.keys(req.files).forEach(f =>{
-        console.log(f);
-    })
     res.send();
 })
 

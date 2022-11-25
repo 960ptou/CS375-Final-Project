@@ -123,7 +123,15 @@ function token2id(req, res, next){
     next();
 }
 
+function requireLogin(req, res, next){ // please use this and the thing above TOGETHER
+    if (!res.locals.userid){
+        return res.status(400).json({"error" : "You have not logged in"});
+    }
+    next();
+}
+
 module.exports = {
     credRoute : router,
-    authSession : token2id
+    authSession : token2id,
+    requireLogin : requireLogin,
 }
