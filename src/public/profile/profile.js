@@ -4,22 +4,13 @@ document.getElementById("edit").addEventListener("click", () => {
 
 document.getElementById("logout").addEventListener("click", () => {
    //delete from cookie session
-   fetch("/cred/logout", {
-         method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }}
-    ).then((response) => {
+   fetch("/cred/logout").then((response) => {
         if (response.status === 200) {
             //redirect to login page
-            window.location.href = "login.html";
+            window.location.href = "/";
         } else {
             console.log("error");
     }})
-});
-
-document.getElementById("del").addEventListener("click", () => {
-
 });
 
 document.getElementById("Add").addEventListener("click", () => {

@@ -103,17 +103,26 @@ router.post("/login", (req, res) =>{
         }
     });
 });
+// I dont think this is needed
+// router.get("/loggedin", (req,res) => {// Later for sending user info, now just saying logged in or not
+//     let session = req.cookies;
+//     let token = session.sessionToken;
 
-router.get("/loggedin", (req,res) => {// Later for sending user info, now just saying logged in or not
-    let session = req.cookies;
-    let token = session.sessionToken;
+//     if (sessionCookies[token]){
+//         return res.json({"userid" : sessionCookies[token]});
+//     }else{
+//         return res.status(400).json({"error" : "Not logged in"});
+//     }
+// });
 
-    if (sessionCookies[token]){
-        return res.json({"userid" : sessionCookies[token]});
+router.get("/logout",token2id, (req, res)=>{
+    if (res.locals.userid){
+        delete sessionCookies[req.cookies.sessionToken]
+        return res.json({"message" : "logged out"})
     }else{
-        return res.status(400).json({"error" : "Not logged in"});
+        return res.status(400).json({"error" : "didn't log in"})
     }
-});
+})
 
 // https://stackoverflow.com/questions/18875292/passing-variables-to-the-next-middleware-using-next-in-express-js
 function token2id(req, res, next){
@@ -124,9 +133,7 @@ function token2id(req, res, next){
 }
 
 function requireLogin(req, res, next){ // please use this and the thing above TOGETHER
-    if (!res.locals.userid){
-        return res.status(400).json({"error" : "You have not logged in"});
-    }
+    if (!res.locals.userid){return res.redirect('/login.html');}
     next();
 }
 
