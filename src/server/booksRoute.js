@@ -8,8 +8,10 @@ const pool = new Pool(env);
 const router = express.Router();
 let glob = require("glob-promise");
 const bookDir = path.join(process.cwd(), "books"); // running directory
+const cred = require(__dirname + "/credientialRoute");
 
 
+router.use(cred.authSession);
 function getMatchHashFromDir(src) {
     let hashMap = {};
     for (f of fs.readdirSync(src)) {
@@ -61,7 +63,31 @@ router.get("/:bookid/:volume/:arc", (req, res) => { // getting single book
 });
 
 
-router.post("/:bookid/:volume/:arc", (req, res) => {
+function privateSend(req, res, next){
+    let bookId = req.params.bookid;
+    let userId = res.locals.userid;
+    pool.query("select * from book where bookid = $1", [bookId]).then((result)=>{
+        if (result.rows[0].is_private){
+            if(!userId){ // short gate
+                return res.status(400).json({"error" : "you are not a user, can't access this private book"});
+            }
+            pool.query("select * from ownby where bookid = $1 and userid= $2", 
+                [bookId, userId]
+            ).then( result2 =>{
+                if(result2.rows.length === 1){ // is the users book;
+                    next();
+                }else{
+                    return res.status(400).json({"error" : "you don't own this private book"});
+                }
+            })
+        }else{
+            next();
+        }
+    })
+}
+
+
+router.post("/:bookid/:volume/:arc",privateSend, (req, res) => {
     let bookid = String(req.params.bookid);
     let vol = String(req.params.volume);
     let arc = String(req.params.arc);
@@ -91,13 +117,13 @@ router.post("/:bookid/:volume/:arc", (req, res) => {
     })
 })
 
-router.get("/:bookid/cover.png", (req, res)=>{
+router.get("/:bookid/cover.png", privateSend, (req, res)=>{
     let bookid = String(req.params.bookid);
     let bookPath = path.join(bookDir, bookid);
     return res.sendFile(path.join(bookPath, "cover.png"))
 })
 
-router.post("/:bookid/volumes", (req, res) => {
+router.post("/:bookid/volumes",privateSend, (req, res) => {
     let bookid = String(req.params.bookid);
     let bookPath = path.join(bookDir, bookid);
     let bookStruct = {};
