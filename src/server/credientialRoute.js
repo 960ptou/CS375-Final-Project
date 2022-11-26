@@ -102,17 +102,14 @@ router.post("/login", (req, res) =>{
         }
     });
 });
-// I dont think this is needed
-// router.get("/loggedin", (req,res) => {// Later for sending user info, now just saying logged in or not
-//     let session = req.cookies;
-//     let token = session.sessionToken;
 
-//     if (sessionCookies[token]){
-//         return res.json({"userid" : sessionCookies[token]});
-//     }else{
-//         return res.status(400).json({"error" : "Not logged in"});
-//     }
-// });
+router.get("/loggedin", token2id, (req,res) => {
+    if (res.locals.userid){
+        return res.send();
+    }else{
+        return res.status(400).send();
+    }
+});
 
 router.get("/username", token2id, requireLogin, (req,res)=>{
     pool.query("select username from users where userid = $1", [res.locals.userid]).then(result =>{
@@ -121,7 +118,6 @@ router.get("/username", token2id, requireLogin, (req,res)=>{
         }else{
             res.status(400).json({"error": "i don't event know this is possible"});
         }
-        
     })
 })
 

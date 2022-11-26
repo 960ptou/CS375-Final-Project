@@ -8,6 +8,14 @@ document.getElementById("search").addEventListener("click", () => {
 
 getBooks("main");
 
+fetch("/cred/loggedin").then(response => {
+    if(response.status === 200){
+        document.getElementById("loggedin").style.display = "block";
+    }else{
+        document.getElementById("notlogged").style.display = "block";
+    }
+})
+
 function getBooks(queryString){
     fetch(`/search?queryString=${queryString || "main"}`).then((response) => {
         if (response.status === 200) {
