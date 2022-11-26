@@ -39,6 +39,7 @@ input[type=range][orient=vertical]
 }
 
 #style_bar{
+    position: fixed;
     display: none;
 }
 
