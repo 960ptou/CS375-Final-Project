@@ -121,16 +121,16 @@ and there is a login + signup..
 		<tr><th>Features</th><th>Complete?</th></tr>
 	</thead>
 	<tbody>
-        <tr><td>Allowing user to add folder</td>    <td>No</td></tr>
-        <tr><td>Home Page</td>                      <td>No</td> </tr>
+        <tr><td>Allowing user to add folder</td>    <td>Yes</td></tr>
+        <tr><td>Home Page</td>                      <td>Yes</td> </tr>
         <tr><td>Page for login</td>                 <td>Yes</td> </tr>
         <tr><td>Page for sign up</td>               <td>Yes</td> </tr>
         <tr><td>Page-Book display(reader page)</td> <td>Yes</td> </tr>
         <tr><td>Database</td>                       <td>Yes</td> </tr>
-        <tr><td>Reading list</td>                   <td>No</td> </tr>
+        <tr><td>Reading list</td>                   <td>Yes</td> </tr>
         <tr><td>Stay Login(cookies)</td>            <td>Yes</td> </tr>
-        <tr><td>Search (author, genre?,title)</td>  <td>No</td> </tr>
-        <tr><td>User option formatting(fonts,size, spacing, profile color)</td> <td>No</td> </tr>
+        <tr><td>Search (author, genre?,title)</td>  <td>Yes</td> </tr>
+        <tr><td>User option formatting(fonts,size, spacing, profile color)</td> <td>Yes</td> </tr>
     </tbody>
 </table>
 
