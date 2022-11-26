@@ -54,6 +54,10 @@ function addXevent(){
     document.querySelectorAll('.close').forEach(e =>{
         e.addEventListener("click", ()=>{
             let relatedBid = e.id;
+            if (!confirm(`Are you sure you want to delete the book with id - ${relatedBid}`)){
+                return;
+            }
+            
             fetch("/file/delete",{
                 method : "POST",
                 body: JSON.stringify({ bookid:relatedBid}),

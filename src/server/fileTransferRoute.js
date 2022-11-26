@@ -147,7 +147,7 @@ router.post("/delete", (req, res) =>{
                 });
                 res.json({"message" : `book id ${bid} was removed by you`});
             }else{
-                console.log(result);
+                console.log("Delete failed", result);
                 res.status(400).json({"message" : `book id ${bid} is not removed`});
             }
         }).catch(err =>{
