@@ -26,6 +26,16 @@ document.getElementById("search").addEventListener("click", () => {
 });
 
 getBooks("private");
+fetch("/cred/username").then(response=>{
+    if (response.status === 200){
+        response.json().then((body) =>{
+            document.getElementById("username").textContent = body.username;
+        })
+    }else{
+        console.log("how is this possible?");
+        document.getElementById("username").textContent = "how is this possible?"
+    }
+})
 
 function getBooks(queryString){
     fetch(`/search/private?queryString=${queryString || "private"}`).then((response) => {

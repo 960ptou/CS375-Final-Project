@@ -8,7 +8,6 @@ const Pool = pg.Pool;
 const pool = new Pool(env);
 const userCred = require(__dirname + "/userCred");
 const pwutil = userCred.passwordUtils ;
-const cookieParser = require("cookie-parser");
 const router = express.Router();
 
 
@@ -114,6 +113,17 @@ router.post("/login", (req, res) =>{
 //         return res.status(400).json({"error" : "Not logged in"});
 //     }
 // });
+
+router.get("/username", token2id, requireLogin, (req,res)=>{
+    pool.query("select username from users where userid = $1", [res.locals.userid]).then(result =>{
+        if (result.rows.length === 1){
+            res.json({"username" : result.rows[0].username});
+        }else{
+            res.status(400).json({"error": "i don't event know this is possible"});
+        }
+        
+    })
+})
 
 router.get("/logout",token2id, (req, res)=>{
     if (res.locals.userid){
