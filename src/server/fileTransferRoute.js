@@ -78,7 +78,7 @@ router.post("/upload", (req, res) =>{
             }else{
                 let bidFolder = path.join(bookDir, String(bid));
                 Object.keys(files).forEach(pathname =>{
-                    let split = pathname.split("/");
+                    let split = decodeURI(pathname).split("/");
                     if (split[1].includes("cover")){
                         files[pathname].mv(path.join(bidFolder, split[1]))
                         return;
@@ -107,7 +107,6 @@ router.post("/upload", (req, res) =>{
                                 dic[myfile[0]] = myfile[1];
                             })
                             let sortedFiles = naturalSort(Object.keys(dic));
-                            console.log(sortedFiles)
                             for(let j = 1; j <= sortedFiles.length; j++){
                                 dic[sortedFiles[j-1]]( path.join(folderpath, `${j}-${sortedFiles[j-1]}`))
                             }

@@ -1,7 +1,3 @@
-document.getElementById("edit").addEventListener("click", () => {
-
-});
-
 document.getElementById("logout").addEventListener("click", () => {
    //delete from cookie session
    fetch("/cred/logout").then((response) => {
@@ -15,6 +11,10 @@ document.getElementById("logout").addEventListener("click", () => {
 
 document.getElementById("Add").addEventListener("click", () => {
     window.location.href = "upload.html";
+});
+
+document.getElementById("main").addEventListener("click", () => {
+    window.location.href = "/";
 });
 
 let result = document.getElementById("result");

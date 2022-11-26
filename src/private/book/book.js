@@ -113,6 +113,9 @@ document.getElementById("nextPage").addEventListener("click", () =>{
     }
 })
 
+
+
+
 function updateURLhash(page){
     window.location.hash = String(page);
 }
@@ -131,3 +134,14 @@ function redirectToDifferentPage(bid, bvol, barc, retrack = true){
     retrack ? window.location.href = newURL : window.location.replace(newURL);
 }
 
+
+
+// Some UX
+document.onkeydown = (evt) => {
+    let code = evt.keyCode;
+    if (code === 37){// left
+        document.getElementById("prevPage").click();
+    }else if(code === 39){ // right
+        document.getElementById("nextPage").click();
+    }
+}

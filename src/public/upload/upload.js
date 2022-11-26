@@ -26,7 +26,9 @@ btn.addEventListener("click",  ()=>{
   formData.append("meta", JSON.stringify(metaInfo));
   fetch("/file/upload", {
     method : "POST",
-    body:formData
+    body:formData,
+    'Content-Type':'multipart/form-data',
+    "accept-charset": "utf-8",
   }).then((response)=>{
     if (response.status === 200){
       console.log("Success");
@@ -64,7 +66,7 @@ input.addEventListener("change", function () {
   bookAry = [];
   for(let i =0; i <this.files.length; i++){
     let file = this.files[i];
-    formData.append(file.webkitRelativePath, file)
+    formData.append(encodeURI(file.webkitRelativePath), file)
     bookAry.push(file.webkitRelativePath)
   }
   dropArea.classList.add("active");
@@ -91,7 +93,7 @@ function traverseFileTree(item, path, form) {
   path = path || "";
   if (item.isFile) {
     item.file(function (file) {
-      form.append(path + file.name, file);
+      form.append(encodeURI(path + file.name), file);
       bookAry.push(path + file.name);
     });
   } else if (item.isDirectory) {
