@@ -36,9 +36,23 @@ input[type=range][orient=vertical]
     height: 50px;
     padding: 0 5px;
     position: fixed;
-
 }
 
 #style_bar{
+    position: fixed;
     display: none;
+}
+
+#content, #titleH{
+    /* https://stackoverflow.com/questions/7018324/how-to-stop-highlighting-of-a-div-element-when-double-clicking */
+    -webkit-user-select: none; /* Chrome/Safari */ 
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* The rule below is not implemented in browsers yet */
+    -o-user-select: none;
+
+    /* The rule below is implemented in most browsers by now */
+    user-select: none;
+
 }

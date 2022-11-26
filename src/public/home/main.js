@@ -8,6 +8,14 @@ document.getElementById("search").addEventListener("click", () => {
 
 getBooks("main");
 
+fetch("/cred/loggedin").then(response => {
+    if(response.status === 200){
+        document.getElementById("loggedin").style.display = "block";
+    }else{
+        document.getElementById("notlogged").style.display = "block";
+    }
+})
+
 function getBooks(queryString){
     fetch(`/search?queryString=${queryString || "main"}`).then((response) => {
         if (response.status === 200) {
@@ -32,33 +40,40 @@ function clearContainer(){
 }
 
 function loadBookDiv(book){
-    let bid = book.bookid;
-    let bname = book.bookname;
-    let blan = book.book_language;
-
     let containerDiv = document.createElement("div");
 
     // title
     let title = document.createElement("span");
-    title.textContent = bname.replaceAll("_", " ");
+    title.className = "title"
+    title.textContent = book.bookname.replaceAll("_", " ");
 
+    // author
+    let author = document.createElement("span");
+    author.className = "author";
+    author.textContent = book.author;
 
     // set image
     let coverImg = document.createElement("img");
-    coverImg.src = `book/${bid}/cover.png`;
+    coverImg.className = "cover"
+    coverImg.src = `book/${book.bookid}/cover.png`;
 
     // set link
     let bLink = document.createElement("a");
-    bLink.href = `book/${bid}/volumes`;
+    bLink.className = "book-url"
+    bLink.href = `book/${book.bookid}/volumes`;
 
-    // meta info
+    // meta info -> not to be shown
     let meta = document.createElement("div");
+    meta.className = "meta";
     meta.style.display = "none"
-    meta.textContent = blan;
+    meta.textContent = book.book_language;
 
     // linking
     bLink.appendChild(coverImg);
     bLink.appendChild(title);
+    bLink.append(author);
+
+
     containerDiv.appendChild(bLink);
     containerDiv.appendChild(meta);
     return containerDiv;

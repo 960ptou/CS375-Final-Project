@@ -24,3 +24,9 @@ document.getElementById("login").addEventListener("click", () => {
 		}
 	});
 });
+
+document.addEventListener("keyup",(event)=>{
+	if(event.keyCode === 13){
+		document.getElementById("login").click();
+	}
+})

@@ -63,24 +63,38 @@
   }
 
   /* https://stackoverflow.com/questions/22592064/how-to-align-text-below-an-image-in-css */
-a{
+.book-url {
   margin: 20px;
+  text-decoration: none; 
 }
 
-img {
+
+
+.book-url > .cover {
   width: 128px;
   height: 196px;
   background: gray;
 }
 
-a > span {
-  word-wrap: break-word;
+.book-url > .title {
+  overflow: hidden;
   margin-left: 20px;
-  width: 128px;
-  display: block;
-  
+  inline-size: 128px;
+  display: block; 
+  color : black;
 }
 
+.book-url > .author {
+  margin-left: 20px;
+  width: 128px;
+  display: block; 
+  color : gray;
+}
+
+
+#container {
+  margin-top : 30px;
+}
 
 #container > div{
   vertical-align: top;

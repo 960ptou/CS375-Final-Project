@@ -21,10 +21,17 @@ body{
     border:1px gray solid;
 }
 
-#title{
+#meta {
     text-align: center;
     font-weight: bolder;
     font-size: xx-large;
+}
+
+#meta > #title {
+    color : white;
+}
+
+#meta > #author {
     color : gray;
 }
 

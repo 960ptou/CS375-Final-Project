@@ -10,6 +10,7 @@ const userCred = require(__dirname + "/userCred");
 const pwutil = userCred.passwordUtils ;
 const router = express.Router();
 
+
 const BAD_REQUEST = 400;
 const SUCCESS = 200;
 const SERVER_ERROR = 500;
@@ -102,16 +103,48 @@ router.post("/login", (req, res) =>{
     });
 });
 
-router.get("/loggedin", (req,res) => {// Later for sending user info, now just saying logged in or not
-    let session = req.cookies;
-    let token = session.sessionToken;
-
-    if (sessionCookies[token]){
-        return res.json({"userid" : sessionCookies[token]});
+router.get("/loggedin", token2id, (req,res) => {
+    if (res.locals.userid){
+        return res.send();
     }else{
-        return res.status(400).json({"error" : "Not logged in"});
+        return res.status(400).send();
     }
 });
 
+router.get("/username", token2id, requireLogin, (req,res)=>{
+    pool.query("select username from users where userid = $1", [res.locals.userid]).then(result =>{
+        if (result.rows.length === 1){
+            res.json({"username" : result.rows[0].username});
+        }else{
+            res.status(400).json({"error": "i don't event know this is possible"});
+        }
+    })
+})
 
-module.exports = router;
+router.get("/logout",token2id, (req, res)=>{
+    if (res.locals.userid){
+        delete sessionCookies[req.cookies.sessionToken]
+        return res.json({"message" : "logged out"})
+    }else{
+        return res.status(400).json({"error" : "didn't log in"})
+    }
+})
+
+// https://stackoverflow.com/questions/18875292/passing-variables-to-the-next-middleware-using-next-in-express-js
+function token2id(req, res, next){
+    let session = req.cookies;
+    let token = session.sessionToken;
+    res.locals.userid = sessionCookies[token]
+    next();
+}
+
+function requireLogin(req, res, next){ // please use this and the thing above TOGETHER
+    if (!res.locals.userid){return res.redirect('/login.html');}
+    next();
+}
+
+module.exports = {
+    credRoute : router,
+    authSession : token2id,
+    requireLogin : requireLogin,
+}

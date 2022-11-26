@@ -1,21 +1,24 @@
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>main</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="utf-8">
+  <title>main</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    <!-- Side navigation -->
-<div class="sidenav">
-    <a href="login.html">Login</a>
-    <a href="signup.html">Sign Up</a>
+  <!-- Side navigation -->
+  <div class="sidenav">
+    <span id="notlogged" hidden>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </span>
+    <span id="loggedin" hidden>
+      <a href="profile.html">Profile</a>
+    </span>
   </div>
-  
+
   <!-- Page content -->
   <div class="main">
     <h2>GROUP B</h2>
@@ -27,10 +30,10 @@
     <div id="container">
     </div>
 
-    </div>
+  </div>
   </div>
 
-    <script src="main.js"></script>
+  <script src="main.js"></script>
 
 </body>
 

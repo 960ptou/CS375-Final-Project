@@ -1,5 +1,6 @@
 let title = document.getElementById("title");
 let container = document.getElementById("container");
+let author = document.getElementById("author");
 
 let bookid;
 
@@ -8,6 +9,8 @@ fetch(window.location.pathname,{method : "POST"}).then((response) =>{
         response.json().then((body)=>{
             bookid = body.bookid;
             title.textContent = body.bookinfo.bookname;
+            author.textContent = body.bookinfo.author;
+
             let volumes = body.volumes;
             let sortedKeys = sortDict(volumes);
             let sortedVolumes = sortDictAry(sortedKeys, volumes);

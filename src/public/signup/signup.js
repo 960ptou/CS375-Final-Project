@@ -28,3 +28,9 @@ document.getElementById("create").addEventListener("click", ()=>{
 		}
     })
 })
+
+document.addEventListener("keyup",(event)=>{
+	if(event.keyCode === 13){
+		document.getElementById("create").click();
+	}
+})

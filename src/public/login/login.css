@@ -1,0 +1,50 @@
+/* https://stackoverflow.com/questions/6464592/how-to-align-entire-html-body-to-the-center */
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle top;
+    background: gray;
+}
+p > a {
+    display :block;
+    text-decoration: none;  /* no default underline*/
+    color :white;
+    font : 25px;
+    text-align: left;
+    border:1px gray solid;
+}
+
+#login{
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    background:none;
+    border: none;
+    color : white;
+    background-color: rgb(82,146,221);
+    border-radius: 5px;
+    width: 270px;
+    height: 30px;
+}
+
+h2{
+    margin: 20px;
+    margin-left: 75px;
+}
+
+input[type=text], input[type=password]{
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    background:none;
+    border: none;
+    color : white;
+    background-color: rgb(46, 40, 40);
+    border-radius: 5px;
+}
