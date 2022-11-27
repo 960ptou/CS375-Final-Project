@@ -39,8 +39,15 @@ input[type=range][orient=vertical]
 }
 
 #style_bar{
+    top: 0;
+    width: 100%;
     position: fixed;
     display: none;
+    background-color: gray;
+}
+
+#style_bar > *{
+    margin-bottom: 10px;
 }
 
 #content, #titleH{

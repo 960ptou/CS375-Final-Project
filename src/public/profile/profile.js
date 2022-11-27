@@ -88,6 +88,7 @@ function addXevent(){
 
 function loadBookDiv(book){
     let containerDiv = document.createElement("div");
+    containerDiv.className = "book-container";
 
     // title
     let title = document.createElement("span");

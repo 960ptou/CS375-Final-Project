@@ -26,7 +26,7 @@ fontSizeBar.addEventListener("change", ()=>{
 })
 
 fontFamilySelect.addEventListener("change", ()=>{
-    localStorage.setItem("font",fontFamilySelect.value );
+    localStorage.setItem("font",fontFamilySelect.value);
     loadSettings();
 })
 
@@ -41,10 +41,10 @@ backgroundColorSelect.addEventListener("change", ()=>{
 })
 
 function loadSettings(){
-    let font = localStorage.getItem("font");
-    let fontSize = localStorage.getItem("fontSize");
-    let fontColor = localStorage.getItem("fontColor");
-    let background = localStorage.getItem("background");
+    let font = localStorage.getItem("font") || fontSizeBar.value;
+    let fontSize = localStorage.getItem("fontSize") || fontFamilySelect.value;
+    let fontColor = localStorage.getItem("fontColor") || fontColorSelect.value;
+    let background = localStorage.getItem("background") || backgroundColorSelect.value;
 
     textContainer.style.fontFamily = font;
     textContainer.style.fontSize = fontSize +"px";

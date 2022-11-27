@@ -68,8 +68,6 @@
   text-decoration: none; 
 }
 
-
-
 .book-url > .cover {
   width: 128px;
   height: 196px;
@@ -100,4 +98,17 @@
   vertical-align: top;
   display: inline-block;
   text-align: center;
+}
+
+
+#search{
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  background:none;
+  border: none;
+  color : white;
+  background-color: rgb(82,146,221);
+  border-radius: 5px;
+  width: 270px;
+  height: 30px;
 }

@@ -114,8 +114,6 @@ document.getElementById("nextPage").addEventListener("click", () =>{
 })
 
 
-
-
 function updateURLhash(page){
     window.location.hash = String(page);
 }
