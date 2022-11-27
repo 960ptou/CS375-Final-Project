@@ -120,7 +120,13 @@ router.post("/:bookid/:volume/:arc",privateSend, (req, res) => {
 router.get("/:bookid/cover.png", privateSend, (req, res)=>{
     let bookid = String(req.params.bookid);
     let bookPath = path.join(bookDir, bookid);
-    return res.sendFile(path.join(bookPath, "cover.png"))
+    glob(path.join(bookPath, "cover.*")).then(files =>{
+        if(files.length >= 1){
+            return res.sendFile(files[0]);
+        }else{
+            return res.status(400).json({"error" : "file not found"});
+        }
+    })
 })
 
 router.post("/:bookid/volumes",privateSend, (req, res) => {

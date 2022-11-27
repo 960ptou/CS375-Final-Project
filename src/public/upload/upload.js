@@ -31,10 +31,11 @@ btn.addEventListener("click",  ()=>{
     "accept-charset": "utf-8",
   }).then((response)=>{
     if (response.status === 200){
-      console.log("Success");
+      alert("You have successfully uploaded");
+      window.location.href = "profile.html";
     }else{
       response.json().then((err)=>{
-        console.log("ERROR", err);
+        alert(err, "please upload again");
       })
     }
     formData = new FormData();

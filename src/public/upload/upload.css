@@ -57,3 +57,17 @@ body{
   object-fit: cover;
   border-radius: 5px;
 }
+
+#profile{
+  display :block;
+  text-decoration: none;  /* no default underline*/
+  color :white;
+  font : 25px;
+  border: none;
+  top: 8px;
+  right: 8px;
+  position: absolute;
+  border-radius: 5px;
+  border-style: dotted;
+  padding: 10px;
+}

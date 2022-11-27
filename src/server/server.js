@@ -6,7 +6,7 @@ const path = require("path");
 
 
 const port = 3000;
-const hostname =  "192.168.0.103"//"localhost";
+const hostname = "localhost";
 const env = require("../env.json");
 const Pool = pg.Pool;
 const pool = new Pool(env);
