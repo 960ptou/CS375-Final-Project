@@ -21,8 +21,17 @@ router.post("/upload", (req, res) =>{
     let uid = res.locals.userid;
     // IMPORTANT remove this
     if (!uid){return res.status(400).json({"error": "not logged in"});}
+    let files = req.files;
+    
+    Object.keys(files).forEach(f =>{
+        let fmimetype = files[f].mimetype
+        if(fmimetype !== "text/plain" && fmimetype.substr(0,5) !== "image"){
+            delete files[f]
+        }
+    })
 
-    if (!req.files || Object.keys(req.files).length === 0) {return res.status(400).json({"error" : 'No files were uploaded'});}
+
+    if (!files || Object.keys(files).length === 0) {return res.status(400).json({"error" : 'No files were uploaded'});}
     let info = JSON.parse(req.body.meta);
     
 
@@ -67,7 +76,6 @@ router.post("/upload", (req, res) =>{
         pool.query(format("insert into book_genre(bookid, genre) values %L", vals), []).catch(err => console.log(err)); // shouldn't fail for any reason
         pool.query("insert into ownby(bookid, userid) values($1,$2)", [bid, uid]).catch(err => console.log(err));
 
-        let files = req.files;
         let fileDict = {
             // folder : filename
         };

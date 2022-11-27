@@ -35,7 +35,7 @@ btn.addEventListener("click",  ()=>{
       window.location.href = "profile.html";
     }else{
       response.json().then((err)=>{
-        alert(err, "please upload again");
+        alert(err.error, "please upload again");
       })
     }
     formData = new FormData();
