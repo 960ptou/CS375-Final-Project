@@ -42,3 +42,15 @@ body{
 a {
     text-decoration: none; 
 }
+
+#home{
+    display :block;
+    background-color: rgb(25, 22, 22);
+    text-decoration: none;  /* no default underline*/
+    color :white;
+    font : 25px;
+    text-align: left;
+    float : right;
+    padding: 10px;
+    border:1px gray solid;
+}
