@@ -113,6 +113,10 @@ document.getElementById("nextPage").addEventListener("click", () =>{
     }
 })
 
+document.getElementById("volumes").addEventListener("click", (evt)=>{
+    redirectToDifferentPage(bookId);
+})
+
 
 function updateURLhash(page){
     window.location.hash = String(page);
