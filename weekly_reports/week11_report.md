@@ -24,6 +24,8 @@
       - Pretty unexpected, I assumed that since client side is done, server should be easy, but the code actually stack up so much layers (should just learn to use async...). and another issue is characters, I needed to encode on client them and decode them on server to make sure different language characters don't come up as random characters.
     - Cleaning -> (4hrs)
       - More just UI/UX stuff, I don't really like front end so there's a lot of search.
+    - Bug fix (3hrs)
+      - an approximation, I just test around, find bug and debug them.
   - Commits:
     - [Upload book](https://github.com/960ptou/CS375-Final-Project/commit/e12d7acb18adff7b9bfd2ab04326751b5546c4e8)
     - [delete (private)book](https://github.com/960ptou/CS375-Final-Project/commit/58c4a59ad5675925f76284a8d161144ceaba49ad)
@@ -40,7 +42,7 @@
 
 
 #### 4.Reflection
-- uploading has so much things to deal with... (weijie)
+- uploading has so much things to deal with..., and there are some bugs that just come out of nowhere. (weijie)
 
 
 #### 5. question for professors
