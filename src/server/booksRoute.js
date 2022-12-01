@@ -15,14 +15,13 @@ router.use(cred.authSession);
 function getMatchHashFromDir(src) {
     let hashMap = {};
     for (f of fs.readdirSync(src)) {
-        if (f === ".DS_Store" || f === "cover.png") {
+        if (f === ".DS_Store" || f.includes("cover")) {
             continue;
         }
         hashMap[f.match(/\d+/)[0]] = f;
     }
     return hashMap;
 }
-
 
 function numberVol(path) {
     let dirInfo = fs.readdirSync(path);
@@ -44,7 +43,6 @@ router.get("/:bookid/volume.js", (req, res) => {
 router.get("/:bookid/volume.css", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "private", "volume", "volume.css"));
 });
-
 
 router.get("/:bookid/:volume/book.css", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "private", "book", "book.css"));
