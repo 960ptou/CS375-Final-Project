@@ -64,6 +64,10 @@ router.get("/:bookid/:volume/:arc", (req, res) => { // getting single book
 function privateSend(req, res, next){
     let bookId = req.params.bookid;
     let userId = res.locals.userid;
+    if (isNaN(Number.parseInt(bookId))){
+        return res.redirect('/'); // Invalid id
+    }
+
     pool.query("select * from book where bookid = $1", [bookId]).then((result)=>{
         if (result.rows[0].is_private){
             if(!userId){ // short gate
