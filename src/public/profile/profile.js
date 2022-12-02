@@ -9,6 +9,10 @@ document.getElementById("logout").addEventListener("click", () => {
     }})
 });
 
+
+
+
+
 document.getElementById("Add").addEventListener("click", () => {
     window.location.href = "upload.html";
 });
