@@ -29,7 +29,9 @@ fetch(window.location.pathname, {method : "POST"}).then((response)=>{
             maxVols = Number.parseInt(body.maxVol);
             if (displayURLArc > maxArcs){
                 redirectToDifferentPage(bookId, currentVol, maxArcs, false);
-            }        
+            }
+            document.getElementById("prevPage").addEventListener("click", previousPage);
+            document.getElementById("nextPage").addEventListener("click", nextPage);
         })
     }else{
         textContainer.textContent = "FAILED"; // redirect to main page later
@@ -77,7 +79,8 @@ window.addEventListener('hashchange', () => {
 });
 
 
-document.getElementById("prevPage").addEventListener("click", () => {
+
+function previousPage(){
     if (currentPage === 1){ // already first page of arc
         // go to previous chapter
         if (currentArc === 1){
@@ -92,11 +95,10 @@ document.getElementById("prevPage").addEventListener("click", () => {
     }else{
         currentPage--;
         updateURLhash(currentPage);
-    }    
-});
+    }  
+}
 
-
-document.getElementById("nextPage").addEventListener("click", () =>{
+function nextPage(){
     if (currentPage >= pages){
         if(currentArc === maxArcs ){
             if (currentVol === maxVols){
@@ -111,7 +113,9 @@ document.getElementById("nextPage").addEventListener("click", () =>{
         currentPage++;
         updateURLhash(currentPage);
     }
-})
+}
+
+
 
 document.getElementById("volumes").addEventListener("click", (evt)=>{
     redirectToDifferentPage(bookId);
