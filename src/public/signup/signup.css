@@ -11,7 +11,7 @@ html {
 body {
     display: table-cell;
     vertical-align: middle top;
-    background: gray;
+    background-image: url("https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") ;
 }
 p > a {
     display :block;

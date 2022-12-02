@@ -10,12 +10,12 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: silver;
+  background-image: url("https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") ;
 }
 
  .filename{
   border: 5px solid gray;
-  background: silver;
+  background: brown;
   position: fixed;
   bottom: 0;
   left: 0;

@@ -10,10 +10,13 @@
 #### 2 Nextweek.
 - Adesewa
   - Things Completed last week
-    - ...
+    - Bug Fixes (2 hrs)
+    - Website Styling (1 hr)
+    
+
 
   - Commits:
-    - ...
+    - [Pushed at once]https://github.com/960ptou/CS375-Final-Project/commit/07bd5a17f8315a33826478c5fc8b0d12985b7817
 - Weijie
   - Things Completed last week (+ previous week)
     - Private read -> (2hrs)
@@ -37,12 +40,13 @@
   - was actually quick simple after finding the extension for fuzzy search
 
 - Adesewa Adesida
-  - ...
+  - none
   
 
 
 #### 4.Reflection
 - uploading has so much things to deal with..., and there are some bugs that just come out of nowhere. (weijie)
+- nothing to comment really
 
 
 #### 5. question for professors
