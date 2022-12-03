@@ -30,7 +30,6 @@ pip install -r dummy_setup/requirements.txt # please note, pip19.x might not wor
 npm install
 
 # in the project directory
-bash ./dummy_setup/refreshdb.bash # refresh the db
 
 # to add some book -> there are 2 options at this point (connection between user & book are not current set)
 
@@ -49,7 +48,8 @@ bash dummy_setup/refreshNload.bash N
 
 # option 2 
 # I've crawl some books from "https://www.gutenberg.org/"
-# you can download them from "https://drive.google.com/file/d/1vKzirYjjlQqivQzcZ7mKwE2vg6vQsByQ/view?usp=sharing"
+# you can download them from "https://drive.google.com/file/d/1UakaEMHfPZQwZl4uvVvrLi2BUqNq-1FC/view?usp=sharing"
+# NOTE -> you the directory won't have the actual book name, you want to do it in the one by one method to allow that
 # unzip the file and upload the each folder after you login. or 
 
 # run this, after you put the folder books in the folder into the "./books" folder in the repo (create it first)
