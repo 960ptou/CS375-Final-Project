@@ -13,6 +13,13 @@ A: 2 parts
 - from the first part, I also want the route to be simple, so no login/login.html...
 ```
 
+# Requirements
+- node.js
+- python3
+- postgres
+- Linux|Macos -> for running the automated data filling
+
+
 ### Run instruction
 ```bash
 # create a env.json that looks like
@@ -48,7 +55,7 @@ bash dummy_setup/refreshNload.bash N
 
 # option 2 
 # I've crawl some books from "https://www.gutenberg.org/"
-# you can download them from "https://drive.google.com/file/d/1UakaEMHfPZQwZl4uvVvrLi2BUqNq-1FC/view?usp=sharing"
+# you can download them from "https://drive.google.com/file/d/1G4NSnKCIMymaZBU_fL-yy84qkdYkQVX1/view?usp=sharing"
 # NOTE -> you the directory won't have the actual book name, you want to do it in the one by one method to allow that
 # unzip the file and upload the each folder after you login. or 
 
