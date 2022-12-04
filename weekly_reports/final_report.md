@@ -25,6 +25,62 @@
 - I think this is also mentioned on the 4th agreement, so YES, only the uploader can delete their book.
 
 ##### 4.
+### Adesewa Adesida
+-  Week6 [commit] https://github.com/960ptou/CS375-Final-Project/commit/71ab8ba3b62690ac9112b06dc91b23b786076611
+  - Estimates 
+    - I created the prototype using figma (2-3 hrs)
+    - I created all the html of the  main page and linked it to the login and signup creating the side bar and the hover highlight
+    - I added some parts to the database
+    - I started on the search functionality
+
+- Actual
+  - Yes the prototype actually took about 2-3 hrs to create if not more because I started off watching youtube videos on how to do figma's widget to html functionality, it was taking alot of time so i just ended up doing it regularly which is what you see. (2 hrs)
+  - Actually coding the html probably took like two hours because of bugs but positioning and design where like another hour (3 hrs)
+  - I didn't add much to the database so (5 minutes)
+  - The search functionality  because of my issues with postgres , I spent like an extra hour trying to figure that out (2hrs)
+
+- Week7 [commit] https://github.com/960ptou/CS375-Final-Project/commit/44105f6efe01b62eee519653e589fb936d60db3c
+  - Estimates
+    - find 10~20 text file for testing (30min)
+    - adding a page for uploading files (book) using drag & drop (3hrs)
+    - doing the profile page & redirect from login (3hrs)
+
+  - Actual
+    - find 10~20 text file for testing, I got 15 text files from an online website & divided their chapters into different folders. (42min)
+    - adding  uploading files (book) using drag & drop (couldn't get it to work properly, so this isnt even the total time, Took longer than expected to understand the idea of uploading, but the actual drag & drop didn't take as long.) (3hrs)
+    - doing the profile page & redirect from login, Having trouble connecting to the login. The html for the profile page probably took like an hour the rest was creating the logout functionality redirect etc (3hrs)
+
+
+- Week8  [commits] https://github.com/960ptou/CS375-Final-Project/commit/f2595b71ae8a4f2bed61f0d4efbb706d5788c937
+-https://github.com/960ptou/CS375-Final-Project/commit/407fb4c271afa3327d3b09311d0b7fa2d6991b99
+  - Estimates
+    - Profile search for books in profile (2hrs)
+    - UI for the uploading of books (4hrs)
+
+  - Actual 
+    - Profile UI, so I started on the profile search functionality (Weijie ended up making this better, then it would display some of the books), then we were also trying to do an edit profile thing then so I had to watch vidoes on how to allow the users upload a profile picture to the database etc, the logout and other buttons worked (we ended up scrapping thiz) (5 hrs) 
+    - Add book, basically just a redirect but this also includes the functionality for the add book(2 hrs)  
+    - upload api, the drag and drop took alot of my time because I was still having issues with postgres then so it was hard to test plus even though the page would collect it it was not storing it, (Weijie ended up helping with this but I did spend alot of  time on it) (8 hrs)
+
+- Week9 [commits] https://github.com/960ptou/CS375-Final-Project/commit/919cf8e3cda0770134725606595c4de035531302
+  - Estimates
+    - make all api from lastweek work properly (6 hrs)
+    - link to database (3 hrs)
+    - complete profile functionality (6 hrs)
+
+  - Actual
+    - Everything worked well now with my teammates help so (2 hrs)
+    - I linked to database (2 hrs)
+    -  The profile functionality here was about cookies and user data ( 3hrs)
+
+
+- Week11 [commits] https://github.com/960ptou/CS375-Final-Project/commit/07bd5a17f8315a33826478c5fc8b0d12985b7817
+  - Estimates
+    - Bug Fixes (2 hrs)
+    - Website Styling (1 hr)
+
+  - Actual
+    -   We were done with all our main functionality so it was really just touchups and testing so (3 hrs)
 ### Weijie Chen
 - Week6
   - Estimates:
@@ -90,6 +146,12 @@
 - Another thing is the time spent on planning for things, like what structure should we use and what format to use, the time shown above I will say is 90% not true, because I don't count time where I just set on the subway and think about what I should do for things like database design and other structure things and even now I don't know how much time I spent doing them.
 - While I don't have a good estimate on how much time spent thinking about the structure, for the coding part at max I spent more than 3hours but for general cases were 30min-1hour.
 
+### Adesewa Adesida Reflection
+- This project pushed me alot and it even helped me realize  some of the mistakes I had been making in my past assignments
+- Having a team member that is also very experienced was very helpful because most of the time if I had an issue i can ask and it made things easier
+- I gained alot of new skills and I am happy with our product, the backend definitely took the most time, in hindsight I would focus entirely on the backend first because bugs were annoying.
+- Actual times we put into this projec cannot actually be known because there was also some stuff I added I ended up scrapping
+
 
 
 
@@ -100,7 +162,12 @@
     - In the server side there's a huge chain of nested promises for the user to upload, it does insert into database, separate files into directory, sorting, session validation, likely the single biggest function i've wrote for this project. Likely the hardest and most important piece of code that needs to be rewrite once I learn to use async correctly. 
     - with both the server and client side, it's able to read Chinese characters sent by formData which by default will be some garbage characters. But after hours of research, I come up with the idea to encode (encodeURI) in client and decode in server to allow those characters to be stored properly.
 
+- Adesewa
+ - I am most proud of the drag and drop api and how easily everytyhing is linked, I love that our website is cohesive which is what I was aiming for.
+
+
 
 ##### 6
 - The upload method, currently to upload, the user has to send the whole book including cover image in one restricted format. I want to support different ways for the user to upload like volume by volume, but I was mostly concerned with speed at that point. If I picked the different method, it should make future expansion of upload and modify easier.
 - On the logicistic side, outside of class we meet on some Fridays via Zoom and mostly communicate via text. While some issue related to using github (collision) didn't happen, we could used a different way to communicate our progress to make updates easier.
+- I definitely feel more research ahead of time would have made things a bit smoother.
