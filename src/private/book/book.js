@@ -9,17 +9,16 @@ let currentPage = Number(getCurrentHash()) || 1; // 0 -> 1
 let maxArcs;
 let maxVols;
 let displayURLArc = Number(document.URL.split("/").at(-1));
-
 // At start -> need a way to get data instead
 fetch(window.location.pathname, {method : "POST"}).then((response)=>{
     // I will store things text content into local storage.
     if(response.status === 200){
         response.json().then((body) =>{
-            localStorage.setItem("text" , body.text);
-            localStorage.setItem("title" , body.title);
+            sessionStorage.setItem("text" , body.text);
+            sessionStorage.setItem("title" , body.title);
             // init
             splitTextContent();
-            titleH.textContent = localStorage.getItem("title");
+            titleH.textContent = sessionStorage.getItem("title");
             displayText(currentPage);
             bookId = body.bookid;
 
@@ -39,29 +38,29 @@ fetch(window.location.pathname, {method : "POST"}).then((response)=>{
 });
 
 function splitTextContent(){
-    // This function changes localStorage "text"
+    // This function changes sessionStorage "text"
     // into "text1", "text2" ...
     let lines = [];
-    let texts = localStorage.getItem("text");
-    localStorage.removeItem("text");
+    let texts = sessionStorage.getItem("text");
+    sessionStorage.removeItem("text");
 
     for(text of texts.split("\n")){
         lines.push(text);
     }
 
-    // https://stackoverflow.com/questions/3357553/how-do-i-store-an-array-in-localstorage
+    // https://stackoverflow.com/questions/3357553/how-do-i-store-an-array-in-sessionStorage
     for(let i = 0; i < Math.ceil(lines.length / linesPerPage); i++){
-        localStorage.setItem(`text${i+1}`, JSON.stringify(lines.slice(i*linesPerPage, (i+1)*linesPerPage)) );
+        sessionStorage.setItem(`text${i+1}`, JSON.stringify(lines.slice(i*linesPerPage, (i+1)*linesPerPage)) );
         pages += 1;
     }
 }
 
 function displayText(page, container = textContainer){
     // https://stackoverflow.com/questions/4607745/split-string-only-on-first-instance-of-specified-character
-    let title = localStorage.getItem("title");
+    let title = sessionStorage.getItem("title");
     title = title.replace(".txt", "").replaceAll("_", " ");
     titleH.textContent = `${title} ${page == 1 ? "" : `(${page})` }`; // == over === because the type changes.
-    let thisPageText = JSON.parse(localStorage.getItem(`text${page}`));
+    let thisPageText = JSON.parse(sessionStorage.getItem(`text${page}`));
     textContainer.textContent = ""; // clear previous content
 
     for(line of thisPageText){
