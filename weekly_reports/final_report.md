@@ -26,7 +26,7 @@
 
 ##### 4.
 ### Adesewa Adesida
--  Week6 [commit] https://github.com/960ptou/CS375-Final-Project/commit/71ab8ba3b62690ac9112b06dc91b23b786076611
+-  Week6 [commit](https://github.com/960ptou/CS375-Final-Project/commit/71ab8ba3b62690ac9112b06dc91b23b786076611)
   - Estimates 
     - I created the prototype using figma (2-3 hrs)
     - I created all the html of the  main page and linked it to the login and signup creating the side bar and the hover highlight
@@ -39,7 +39,7 @@
   - I didn't add much to the database so (5 minutes)
   - The search functionality  because of my issues with postgres , I spent like an extra hour trying to figure that out (2hrs)
 
-- Week7 [commit] https://github.com/960ptou/CS375-Final-Project/commit/44105f6efe01b62eee519653e589fb936d60db3c
+- Week7 [commit](https://github.com/960ptou/CS375-Final-Project/commit/44105f6efe01b62eee519653e589fb936d60db3c)
   - Estimates
     - find 10~20 text file for testing (30min)
     - adding a page for uploading files (book) using drag & drop (3hrs)
@@ -51,8 +51,8 @@
     - doing the profile page & redirect from login, Having trouble connecting to the login. The html for the profile page probably took like an hour the rest was creating the logout functionality redirect etc (3hrs)
 
 
-- Week8  [commits] https://github.com/960ptou/CS375-Final-Project/commit/f2595b71ae8a4f2bed61f0d4efbb706d5788c937
--https://github.com/960ptou/CS375-Final-Project/commit/407fb4c271afa3327d3b09311d0b7fa2d6991b99
+- Week8  [commits](https://github.com/960ptou/CS375-Final-Project/commit/f2595b71ae8a4f2bed61f0d4efbb706d5788c937)
+- [and](https://github.com/960ptou/CS375-Final-Project/commit/407fb4c271afa3327d3b09311d0b7fa2d6991b99)
   - Estimates
     - Profile search for books in profile (2hrs)
     - UI for the uploading of books (4hrs)
@@ -62,7 +62,7 @@
     - Add book, basically just a redirect but this also includes the functionality for the add book(2 hrs)  
     - upload api, the drag and drop took alot of my time because I was still having issues with postgres then so it was hard to test plus even though the page would collect it it was not storing it, (Weijie ended up helping with this but I did spend alot of  time on it) (8 hrs)
 
-- Week9 [commits] https://github.com/960ptou/CS375-Final-Project/commit/919cf8e3cda0770134725606595c4de035531302
+- Week9 [commits](https://github.com/960ptou/CS375-Final-Project/commit/919cf8e3cda0770134725606595c4de035531302)
   - Estimates
     - make all api from lastweek work properly (6 hrs)
     - link to database (3 hrs)
@@ -74,7 +74,7 @@
     -  The profile functionality here was about cookies and user data ( 3hrs)
 
 
-- Week11 [commits] https://github.com/960ptou/CS375-Final-Project/commit/07bd5a17f8315a33826478c5fc8b0d12985b7817
+- Week11 [commits](https://github.com/960ptou/CS375-Final-Project/commit/07bd5a17f8315a33826478c5fc8b0d12985b7817)
   - Estimates
     - Bug Fixes (2 hrs)
     - Website Styling (1 hr)
@@ -82,7 +82,7 @@
   - Actual
     -   We were done with all our main functionality so it was really just touchups and testing so (3 hrs)
 ### Weijie Chen
-- Week6
+- Week7
   - Estimates:
     - Getting the user login to work and allow the user to stay logged in via cookie (1-2hrs)
     - Create some queries to do database IO (1hr)
@@ -90,11 +90,10 @@
     - Prepare the database for the books (1-3hr)
   - Actual:
     - Getting user login & signup to work with database (5hours)    
-    - Allow user to have cookie to stay logged in ( need to test via browser)
     - create some queries/scripts for cmd test (40min)
     - Set up the login/sign up page (30min)
     - Creating the database with ER model (2hours)
-- Week7
+- Week8
   - Estimates:
     - decide formats for storing text in local (1hr)
     - upload books (sort, store) (3hrs)
@@ -104,22 +103,16 @@
       - (2hrs planned 1hr, needed to test things out with running the server.. took longer than expected but very important)
     - Parsing files into html, allowing navigation to different vol, arcs..
       - (6hrs planned 3hrs, on the server side I just sent the txt file, but client side is the issue)
-      - I suppose I just needed to have that done with adding the parsing.
-      - But now it has some basic formatting & allows going to different volumes | arcs properly.
     - Created the page for nagivation between all the arcs of the book (3hrs)
-      - Wasn't actually planned, but needed to navigation on the pages.. 
-- Week8
+- Week9
   - Estimates:
     - Fill up the database with some data for testing and image for cover (private books ...) -> (5hrs including testing)
     - search on genre, name, ~blur search? (3hrs)
   - Actual:
     - Fill up the database with some data for testing and image for cover (private books ...) -> (5hrs)
-      - nothing much to say here... I was trying to be creative with some AI image, took longer than expect and found nothing... (I don't want faces as my book cover)
     - Main page interaction for search (1hr)
-      - Not planned, but I did the search so I just do that to display..
     - search on genre, name, ~blur search? (2hrs)
-      - Needs a extension for postgres, the coding part wasn't hard. 
-- Week9
+- Week11
   - Estimates:
     - the private I/O
       - reading private book (prevent other people from reading) ~ 2hrs
@@ -128,25 +121,23 @@
     - cleaning up (since I want to finish it) ~ 3-4hrs
   - Actual:
     - Private read -> (2hrs)
-      - wasn't that hard after knowing how to create middleware for the read
     - Private delete -> (1hr)
-      - Since this is the only delete I allow, it's basically "delete", wasn't too hard
     - Upload -> (6hrs)
-      - Pretty unexpected, I assumed that since client side is done, server should be easy, but the code actually stack up so much layers (should just learn to use async...). and another issue is characters, I needed to encode on client them and decode them on server to make sure different language characters don't come up as random characters.
     - Cleaning -> (4hrs)
-      - More just UI/UX stuff, I don't really like front end so there's a lot of search.
     - Bug fix (3hrs)
-      - an approximation, I just test around, find bug and debug them.
-- Week11 -> nothing was planned, I just test around...
-  - Estimates: NONE
-  - Actual: NONE 
+- Major commits
+  - [login/signup cookie for session](https://github.com/960ptou/CS375-Final-Project/commit/3a2059b47137a7af3a1d9bb56cb524bafb177fc0)
+  - [adding book volumes page](https://github.com/960ptou/CS375-Final-Project/commit/39328aa608e82cdd35824eefbbbc751975cbea84)
+  - [Adding search in main + main page displaying book links](https://github.com/960ptou/CS375-Final-Project/commit/72a4cafc9438b9d2e62511bc6cac9d3ee9b7b944)
+  - [Upload book](https://github.com/960ptou/CS375-Final-Project/commit/e12d7acb18adff7b9bfd2ab04326751b5546c4e8)
+  - [Delete book](https://github.com/960ptou/CS375-Final-Project/commit/58c4a59ad5675925f76284a8d161144ceaba49ad)
 
 #### Q4-> Weijie Chen Reflection
 - It appear I tend to underestimate the time I need for most things, but mostly on thing I don't have any knowledge of previously, like cookies, middleware and uploading. Another thing that I basically didn't do well is in planning what work I should be working on, often if not most of the time if I want to do A, B is normally required and I didn't notice that so a lot of time was spent on doing things not on the plan and sometimes unable to complete according to the plan. 
 - Another thing is the time spent on planning for things, like what structure should we use and what format to use, the time shown above I will say is 90% not true, because I don't count time where I just set on the subway and think about what I should do for things like database design and other structure things and even now I don't know how much time I spent doing them.
 - While I don't have a good estimate on how much time spent thinking about the structure, for the coding part at max I spent more than 3hours but for general cases were 30min-1hour.
 
-### Adesewa Adesida Reflection
+### Q4 -> Adesewa Adesida Reflection
 - This project pushed me alot and it even helped me realize  some of the mistakes I had been making in my past assignments
 - Having a team member that is also very experienced was very helpful because most of the time if I had an issue i can ask and it made things easier
 - I gained alot of new skills and I am happy with our product, the backend definitely took the most time, in hindsight I would focus entirely on the backend first because bugs were annoying.
@@ -154,13 +145,11 @@
 
 
 
-
-
-##### 5, I suppose we are going by opinion..
+##### 5 - suppose we are going by opinion..
 - Weijie
   - The upload part in the server and client side.
     - In the server side there's a huge chain of nested promises for the user to upload, it does insert into database, separate files into directory, sorting, session validation, likely the single biggest function i've wrote for this project. Likely the hardest and most important piece of code that needs to be rewrite once I learn to use async correctly. 
-    - with both the server and client side, it's able to read Chinese characters sent by formData which by default will be some garbage characters. But after hours of research, I come up with the idea to encode (encodeURI) in client and decode in server to allow those characters to be stored properly.
+    - with both the server and client side, it's able to read Chinese (or other none ASCII I suppose) characters sent by formData which by default will be some garbage characters. But after hours of research, I come up with the idea to encode (encodeURI) in client and decode in server to allow those characters to be stored properly.
 
 - Adesewa
  - I am most proud of the drag and drop api and how easily everytyhing is linked, I love that our website is cohesive which is what I was aiming for.
