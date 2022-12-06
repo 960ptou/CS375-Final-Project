@@ -55,7 +55,7 @@ bash dummy_setup/refreshNload.bash N
 
 # option 2 
 # I've crawl some books from "https://www.gutenberg.org/"
-# you can download them from "https://drive.google.com/file/d/1G4NSnKCIMymaZBU_fL-yy84qkdYkQVX1/view?usp=sharing"
+# you can download them from "https://drive.google.com/file/d/1G4NSnKCIMymaZBU_fL-yy84qkdYkQVX1/view?usp=sharing" # but please note that some of the books are "empty" due to my poor scraping skills
 # NOTE -> you the directory won't have the actual book name, you want to do it in the one by one method to allow that
 # unzip the file and upload the each folder after you login. or 
 
