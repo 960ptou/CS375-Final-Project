@@ -51,8 +51,7 @@
     - doing the profile page & redirect from login, Having trouble connecting to the login. The html for the profile page probably took like an hour the rest was creating the logout functionality redirect etc (3hrs)
 
 
-- Week8  [commits](https://github.com/960ptou/CS375-Final-Project/commit/f2595b71ae8a4f2bed61f0d4efbb706d5788c937)
-- [and](https://github.com/960ptou/CS375-Final-Project/commit/407fb4c271afa3327d3b09311d0b7fa2d6991b99)
+- Week8  [commits](https://github.com/960ptou/CS375-Final-Project/commit/f2595b71ae8a4f2bed61f0d4efbb706d5788c937) [and this](https://github.com/960ptou/CS375-Final-Project/commit/407fb4c271afa3327d3b09311d0b7fa2d6991b99)
   - Estimates
     - Profile search for books in profile (2hrs)
     - UI for the uploading of books (4hrs)
