@@ -5,7 +5,7 @@
 </thead>
 </table>
 
-##### 2 [ProjectLink](https://github.com/960ptou/CS375-Final-Project)
+##### 2.  [ProjectLink](https://github.com/960ptou/CS375-Final-Project)
 
 
 ##### 3. The contract
@@ -24,8 +24,8 @@
 5. Only an uploader should be able to delete a book from their current account but they can delete it from their profile
 - I think this is also mentioned on the 4th agreement, so YES, only the uploader can delete their book.
 
-##### 4.
-### Adesewa Adesida
+
+### 4. => Adesewa Adesida History
 -  Week6 [commit](https://github.com/960ptou/CS375-Final-Project/commit/71ab8ba3b62690ac9112b06dc91b23b786076611)
   - Estimates 
     - I created the prototype using figma (2-3 hrs)
@@ -80,7 +80,15 @@
 
   - Actual
     -   We were done with all our main functionality so it was really just touchups and testing so (3 hrs)
-### Weijie Chen
+
+### Q4 -> Adesewa Adesida Reflection
+- This project pushed me alot and it even helped me realize  some of the mistakes I had been making in my past assignments
+- Having a team member that is also very experienced was very helpful because most of the time if I had an issue i can ask and it made things easier
+- I gained alot of new skills and I am happy with our product, the backend definitely took the most time, in hindsight I would focus entirely on the backend first because bugs were annoying.
+- Actual times we put into this projec cannot actually be known because there was also some stuff I added I ended up scrapping
+
+
+### 4. => Weijie Chen History
 - Week7
   - Estimates:
     - Getting the user login to work and allow the user to stay logged in via cookie (1-2hrs)
@@ -136,15 +144,9 @@
 - Another thing is the time spent on planning for things, like what structure should we use and what format to use, the time shown above I will say is 90% not true, because I don't count time where I just set on the subway and think about what I should do for things like database design and other structure things and even now I don't know how much time I spent doing them.
 - While I don't have a good estimate on how much time spent thinking about the structure, for the coding part at max I spent more than 3hours but for general cases were 30min-1hour.
 
-### Q4 -> Adesewa Adesida Reflection
-- This project pushed me alot and it even helped me realize  some of the mistakes I had been making in my past assignments
-- Having a team member that is also very experienced was very helpful because most of the time if I had an issue i can ask and it made things easier
-- I gained alot of new skills and I am happy with our product, the backend definitely took the most time, in hindsight I would focus entirely on the backend first because bugs were annoying.
-- Actual times we put into this projec cannot actually be known because there was also some stuff I added I ended up scrapping
 
 
-
-##### 5 - suppose we are going by opinion..
+##### 5 - most proud of -> suppose we are going by opinion..
 - Weijie
   - The upload part in the server and client side.
     - In the server side there's a huge chain of nested promises for the user to upload, it does insert into database, separate files into directory, sorting, session validation, likely the single biggest function i've wrote for this project. Likely the hardest and most important piece of code that needs to be rewrite once I learn to use async correctly. 
@@ -155,7 +157,7 @@
 
 
 
-##### 6
+##### 6 - things could’ve done differently.
 - The upload method, currently to upload, the user has to send the whole book including cover image in one restricted format. I want to support different ways for the user to upload like volume by volume, but I was mostly concerned with speed at that point. If I picked the different method, it should make future expansion of upload and modify easier.
 - On the logicistic side, outside of class we meet on some Fridays via Zoom and mostly communicate via text. While some issue related to using github (collision) didn't happen, we could used a different way to communicate our progress to make updates easier.
 - I definitely feel more research ahead of time would have made things a bit smoother.
