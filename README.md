@@ -20,8 +20,9 @@ A: 2 parts
 - Linux|Macos -> for running the automated data filling
 
 #### Quick show
-<video src="assets/quickDemo.mp4" controls="controls" style="max-width: 730px;">
-</video>
+[quick show](assets/quickDemo.mp4)
+
+
 
 ### Run instruction
 ```bash
