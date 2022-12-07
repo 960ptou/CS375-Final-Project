@@ -100,7 +100,7 @@ function previousPage(){
 function nextPage(){
     if (currentPage >= pages){
         if(currentArc === maxArcs ){
-            if (currentVol === maxVols){
+            if (currentVol + 1 === maxVols){
                 redirectToDifferentPage(bookId); // To book page
             }else{
                 redirectToDifferentPage(bookId, currentVol + 1, 1); 
