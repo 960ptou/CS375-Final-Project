@@ -19,6 +19,8 @@ A: 2 parts
 - postgres
 - Linux|Macos -> for running the automated data filling
 
+#### Quick show
+![asd](./assets/quickDemo.mp4)
 
 ### Run instruction
 ```bash
